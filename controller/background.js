@@ -70,8 +70,8 @@ var ReaderBG={
         window.localStorage.data=JSON.stringify(data);
     },
     /**
- * concatenate lists and return the number of unread items.
- */
+     * concatenate lists and return the number of unread items.
+     */
     concatLists:function(origin,newlist,storeKey){
         var i=0;
         var counter=0;
@@ -114,14 +114,15 @@ var ReaderBG={
             i--;
         }
         window.localStorage[storeKey]=JSON.stringify(origin);
+        origin[0].description=util.cutText(origin[0].description, 100);
         if(counter > 0){
             notifications.push(origin[0]);
         }
         return counter;
     },
     /**
- * fire the html nnotification.
- */
+     * fire the html nnotification.
+     */
     fireNotification:function(title,img,description,link,close){
         var htmlPath='notification.html?'+'title='+encodeURIComponent(title)+"&img="+(img != null?encodeURIComponent(img):'images/logo.png')+"&desc="+encodeURIComponent(description)+"&link="+encodeURIComponent(link)+"&close="+close;
         var notification = webkitNotifications.createHTMLNotification(htmlPath);
