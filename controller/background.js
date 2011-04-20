@@ -17,11 +17,11 @@ var ReaderBG={
     /**
      * read from url and process handler on success.
      */
-    read:function(item,handler){
+    read:function(item,handler,type){
         jQuery.getFeed({
             url:item.url,
             success:function(rss){
-                handler(rss,item.id);
+                handler(rss,item.id,type);
             },
             error:function(XMLHttpRequest, textStatus, errorThrown){
             }
@@ -44,23 +44,34 @@ var ReaderBG={
         data=JSON.parse(window.localStorage.data);
         for(var i=0;i<data.channels.length;i++){
             if(data.channels[i].active==true){
-                ReaderBG.read(data.channels[i], function(rss,itemId){
-                    var origin=[];
-                    if(window.localStorage['rss-cat-'+itemId]){
-                        origin=JSON.parse(window.localStorage['rss-cat-'+itemId]);
-                    }
-                    var counter=ReaderBG.concatLists(origin, rss.items,'rss-cat-'+itemId);
-                    ReaderBG.setBadgeText(counter);
-                    data.channels[itemId-1].unreaditems=counter;
-                    window.localStorage.data=JSON.stringify(data);
-                });
+                ReaderBG.read(data.channels[i], ReaderBG.parseRSS);
             }
         }
-        window.setTimeout("ReaderBG.runNotifications()", 1000 * 60 );
+        ReaderBG.read(data.mutlimedia.video, ReaderBG.parseRSS,'video');
+        ReaderBG.read(data.mutlimedia.car, ReaderBG.parseRSS,'car');
+        window.setTimeout(function(){
+            ReaderBG.runNotifications();
+        }, 1000 * 60 );
+    },
+    parseRSS:function(rss,itemId,type){
+        var origin=[];
+        if(window.localStorage['rss-cat-'+itemId]){
+            origin=JSON.parse(window.localStorage['rss-cat-'+itemId]);
+        }
+        var counter=ReaderBG.concatLists(origin, rss.items,'rss-cat-'+itemId);
+        ReaderBG.setBadgeText(counter);
+        var data=JSON.parse(window.localStorage.data);
+
+        if(type){
+            data.mutlimedia[type].unreaditems=counter;
+        }else{
+            data.channels[itemId-1].unreaditems=counter;
+        }
+        window.localStorage.data=JSON.stringify(data);
     },
     /**
-     * concatenate lists and return the number of unread items.
-     */
+ * concatenate lists and return the number of unread items.
+ */
     concatLists:function(origin,newlist,storeKey){
         var i=0;
         var counter=0;
@@ -89,12 +100,12 @@ var ReaderBG={
             i++;
         }
         while(i > 0){
-            el=util.parseHTML(newlist[i].description);
+            el=util.parseHTML(newlist[i-1].description);
             origin.unshift({
                 title:newlist[i-1].title,
                 description:el.description,
                 img:el.imgsrc,
-                link:newlist[i].link,
+                link:newlist[i-1].link,
                 updated:newlist[i-1].updated,
                 unread:true
             });
@@ -109,8 +120,8 @@ var ReaderBG={
         return counter;
     },
     /**
-     * fire the html nnotification.
-     */
+ * fire the html nnotification.
+ */
     fireNotification:function(title,img,description,link,close){
         var htmlPath='notification.html?'+'title='+encodeURIComponent(title)+"&img="+(img != null?encodeURIComponent(img):'images/logo.png')+"&desc="+encodeURIComponent(description)+"&link="+encodeURIComponent(link)+"&close="+close;
         var notification = webkitNotifications.createHTMLNotification(htmlPath);
