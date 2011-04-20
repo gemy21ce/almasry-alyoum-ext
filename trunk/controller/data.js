@@ -435,22 +435,26 @@ var data={
         active:false,
         lastItemPubDate:0,
         category:'news'
-    },{
-        id:54,
-        title:'فيديو',
-        url:'http://www.almasryalyoum.com/rss_feed_video/rss.xml',
-        unreaditems:0,
-        active:false,
-        lastItemPubDate:0,
-        category:'thumb'
-    },{
-        id:55,
-        title:'كاريكاتير',
-        url:'http://www.almasryalyoum.com/rss_feed_caricature/rss.xml',
-        unreaditems:0,
-        active:false,
-        lastItemPubDate:0,
-        category:'thumb'
-    }]
+    }],
+    mutlimedia:{
+        video:{
+            id:54,
+            title:'فيديو',
+            url:'http://www.almasryalyoum.com/rss_feed_video/rss.xml',
+            unreaditems:0,
+            active:false,
+            lastItemPubDate:0,
+            category:'thumb'
+        },
+        car:{
+            id:55,
+            title:'كاريكاتير',
+            url:'http://www.almasryalyoum.com/rss_feed_caricature/rss.xml',
+            unreaditems:0,
+            active:false,
+            lastItemPubDate:0,
+            category:'thumb'
+        }
+    }
 }
 

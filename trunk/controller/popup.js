@@ -27,12 +27,14 @@ var ReaderPOPUP={
     menu:function(){
         var out='';
         for(i=0; i<data.channels.length; i++){
-            if(data.channels[i].active == true){
-                out+='<li onclick="ReaderPOPUP.openCategory(this.id)" id="cat-'+data.channels[i].id+'">';
+            if(data.channels[i].active == true && data.channels[i].category == 'news'){
+                out+='<li onclick="ReaderPOPUP.openCategory(this.id)" id="'+data.channels[i].id+'">';
                 if(data.channels[i].unreaditems > 0){
                     out+='<span class="new-news">'+data.channels[i].unreaditems+'</span>';
                 }
+                out+='<a>';
                 out+=data.channels[i].title;
+                out+='</a>';
                 out+='</li>';
             }
         }
@@ -43,10 +45,30 @@ var ReaderPOPUP={
      */
     ReaderPOPUP:function(){
         data=JSON.parse(window.localStorage.data);
-        //$("ul#tabs-menu").html(ReaderPOPUP.menu());
+        $("ul#tabs-menu").html(ReaderPOPUP.menu()+$("ul#tabs-menu").html());
+
+        $('ul#tabs-menu').carouFredSel({
+            prev: '#prev1',
+            next: '#next1',
+            auto: false,
+            items:2,
+            circular    : false,
+            padding:'auto',
+            width:'250px',
+            infinite:false
+        });
+
         if(window.localStorage.lastTab){
             var lastTab=JSON.parse(window.localStorage.lastTab);
-            ReaderPOPUP.openCategory(lastTab.id);
+            switch(lastTab.type){
+                case 'news':{
+                    ReaderPOPUP.openCategory(lastTab.id);
+                    break;
+                }
+                default : {
+                    ReaderPOPUP.openMutimediaTab();
+                }
+            }
         }else{
             $($('#tabs-menu').children()[0]).trigger('click');
         }
@@ -59,16 +81,22 @@ var ReaderPOPUP={
      * open category from menu clicking.
      */
     openCategory:function(id){
+        $("#tab-multimedia").hide();
+        $("#tabs-content").show();
         if(!window.localStorage['rss-cat-'+id]){
             $("#tabs-content").html('<center><br/><br/><br/><br/><br/><img align="center" src="images/loading.gif"/></center>');
-            window.setTimeout("ReaderPOPUP.openCategory('"+id+"')", 1000);
+            ReaderPOPUP.openTimeout=window.setTimeout(function(){
+                ReaderPOPUP.openCategory(id);
+            }, 1000);
             return;
         }
+        window.clearTimeout(ReaderPOPUP.openTimeout);
         var cat=JSON.parse(window.localStorage['rss-cat-'+id]);
         var rows=ReaderPOPUP.getrows(cat);
         $("#tabs-content").html(rows.out);
         var lastTab={
-            tabId:id
+            id:id,
+            type:'news'
         }
         var dataid=parseInt(id);
         data.channels[dataid-1].unreaditems=0;
@@ -77,7 +105,39 @@ var ReaderPOPUP={
         window.localStorage.lastTab=JSON.stringify(lastTab);
         ReaderPOPUP.setCurrentTab(id);
         
-        window.setTimeout('ReaderPOPUP.removeUreadCountLable("'+id+'");', 1000 * 1)
+        window.setTimeout(function(){
+            ReaderPOPUP.removeUreadCountLable(id);
+        }, 1000 * 1)
+    },
+    openMutimediaTab:function(){
+        $("#tabs-content").hide();
+        $("#tab-multimedia").show();
+        ReaderPOPUP.setCurrentTab('media');
+        ReaderPOPUP.openVideoTab();
+    },
+    openVideoTab:function(){
+        var Item=data.mutlimedia.video;
+        $(".active-tab").removeClass('active-tab');
+        $("#openVideo").addClass('active-tab');
+        ReaderPOPUP.multiMedia(Item);
+    },
+    openCarTab:function(){
+        var Item=data.mutlimedia.car;
+        $(".active-tab").removeClass('active-tab');
+        $("#openCar").addClass('active-tab');
+        ReaderPOPUP.multiMedia(Item);
+    },
+    multiMedia:function(item){
+        if(! window.localStorage['rss-cat-'+item.id]){
+            ReaderPOPUP.ReaderPOPUP();
+        }
+        var lastTab={
+            type:'video'
+        }
+        window.localStorage.lastTab=JSON.stringify(lastTab);
+        var rows=ReaderPOPUP.getMultiMediaRow(JSON.parse(window.localStorage['rss-cat-'+item.id]));
+        $("#videoTab").html(rows.out);
+        window.localStorage['rss-cat-'+item.id]=JSON.stringify(rows.list);
     },
     /**
      * generate the rows from list of objects
@@ -87,7 +147,6 @@ var ReaderPOPUP={
         var out="";
         for(var i =0;i<list.length;i++){
             out+='<div class="news-box '+(list[i].unread == true?'news-box-unread':'')+'">';
-            out+=(list[i].unread == true?'<span class="unread"></span>':'');
             list[i].unread = false;
             if(list[i].img == null || list[i].img == ''){
                 out+='<div class="box-news-left box-news-nophoto">';
@@ -96,10 +155,10 @@ var ReaderPOPUP={
                     id:i,
                     src:list[i].img
                 })
-                out+='<div class="news-photo"><img alt="" id="img-'+i+'" width="72" height="51"></img></div>';
+                out+='<div class="news-photo"><img alt="'+list[i].title+'" id="img-'+i+'"></img></div>';
                 out+='<div class="box-news-left">';
             }
-            out+='<div class="box-news-title"><a style="cursor:pointer;" onclick="ReaderPOPUP.openURL(\''+list[i].link+'\');">'+list[i].title+'</a></div>';
+            out+='<div class="box-news-title"><a style="cursor:pointer;" onclick="extension.openURL(\''+list[i].link+'\');">'+list[i].title+'</a></div>';
             out+='<div class="box-news-brief">';
             out+=ReaderPOPUP.cutText(list[i].description, 150, "...");
             out+='</div>';
@@ -113,12 +172,25 @@ var ReaderPOPUP={
             list:list
         };
     },
+    getMultiMediaRow:function(list){
+        var out='';
+        for(i in list){
+            out+='<div class="video">';
+            out+='<div onclick="ReaderPOPUP.openURL(\''+list[i].link+'\');" class="video-title">'+list[i].title+'</div>';
+            out+='<div style="cursor: pointer;"><img onclick="extension.openURL(\''+list[i].link+'\');" src="'+list[i].img+'" width="154" height="86" /></div>';
+            out+='</div>';
+        }
+        return {
+            out:out,
+            list:list
+        };
+    },
     /**
      * add current class to current tab
      */
     setCurrentTab:function(tabid){
         $('.current').removeClass('current');
-        $('#'+tabid).addClass('current');
+        $('#'+tabid).children('a').addClass('current');
     },
     /**
      * removed the unread items count from the tab.
@@ -139,10 +211,37 @@ var ReaderPOPUP={
     domEvents:function(url){
         $("#settings").click(function(){
             extension.openOptionPage();
-        })
+        });
+        $("#media").click(function(){
+            ReaderPOPUP.openMutimediaTab();
+        });
+        $("#openVideo").click(function(){
+            ReaderPOPUP.openVideoTab();
+        });
+        $("#openCar").click(function(){
+            ReaderPOPUP.openCarTab();
+        });
+    },
+    getChannelItem:function(itemId){
+        var data=JSON.parse(window.localStorage.data);
+        for(i in data.channels){
+            if(data.channels[i].id == itemId){
+                return data.channels[i];
+            }
+        }
+        return null;
     }
 }
 $(function(){
-    ReaderPOPUP.domEvents();
     ReaderPOPUP.ReaderPOPUP();
+    ReaderPOPUP.domEvents();
+
+    
 });
+/*
+
+<ul style="cursor: pointer;" id="tabs-menu" class="user_interaction"><li onclick="ReaderPOPUP.openCategory(this.id)" id="1"><a>أخبار الصفحة الأولي</a></li><li onclick="ReaderPOPUP.openCategory(this.id)" id="2"><a>اخبار</a></li><li onclick="ReaderPOPUP.openCategory(this.id)" id="3"><a>أخبار مصر</a></li><li onclick="ReaderPOPUP.openCategory(this.id)" id="4"><a>الحوادث</a></li><li onclick="ReaderPOPUP.openCategory(this.id)" id="5"><a>الشارع السياسي</a></li><li onclick="ReaderPOPUP.openCategory(this.id)" id="6"><a>العالم</a></li><li onclick="ReaderPOPUP.openCategory(this.id)" id="7"><a>العالم العربي</a></li><li onclick="ReaderPOPUP.openCategory(this.id)" id="8"><a>اقتصاد</a></li><li onclick="ReaderPOPUP.openCategory(this.id)" id="9"><a>أسواق وشركات</a></li>
+                        <li id="media"><a class="current">ملتميديا</a></li>
+                    </ul>
+
+ */

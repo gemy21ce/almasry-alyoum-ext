@@ -12,19 +12,36 @@
     <body>
         <div class="extention-container">
             <div class="header">
-                <img src="images/logo.png" width="124" height="23" alt="Elmasry Elyoum" />
-                <!--<div class="tabs">
-                    <ul id="tabs-menu" class="tabs-header">
+                <div class="logo">
+                    <img src="images/logo.png" width="124" height="23" alt="Elmasry Elyoum" />
+                </div>
+                <div class="list_carousel">
+                    <ul style="cursor: pointer;" id="tabs-menu" class="user_interaction">
+                        <li id="media"><a>ملتميديا</a></li>
                     </ul>
-                </div>-->
+
+                    <div class="clearfix"></div>
+                    <a id="prev1" style="cursor: pointer;">« </a>
+                    <a id="next1" style="cursor: pointer;"> »</a>
+                </div>
             </div>
             <div id="tabs-content" class="scrollable-content">
             </div>
+            <div id="tab-multimedia" class="news-content" style="display: none;">
+                <div class="videos-container">
+                    <div class="videos-tabs">
+                        <div id="openVideo" style="cursor: pointer;" class="right-tab">فيديو</div>
+                        <div id="openCar" style="cursor: pointer;" class="left-tab">كاريكاتير</div>
+                    </div>
+                    <div class="scrolled-videos" id="videoTab">
+                    </div>
+                </div>
+            </div>
             <div class="settings" style="height:23px; ">
                 <form action="" method="">
-<!--                    <input name="" type="text" />
-                    <input name="" type="submit" value="بحث"/>-->
-                <a id="settings">الاعدادات</a>
+                    <!--                    <input name="" type="text" />
+                                        <input name="" type="submit" value="بحث"/>-->
+                    <a id="settings">الاعدادات</a>
                 </form>
             </div>
         </div>
