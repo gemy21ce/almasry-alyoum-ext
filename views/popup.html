@@ -2,37 +2,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>سبق</title>
+        <title>المصري اليوم</title>
         <link href="css/style.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="js/jquery.carouFredSel-4.0.0-packed.js"></script>
         <script type="text/javascript" src="../controller/popup.js"></script>
+        <script type="text/javascript" src="../controller/extension_util.js"></script>
     </head>
-
     <body>
         <div class="extention-container">
-            <div class="tab-header">
-                <div class="logo"></div>
-                <div class="tabs">
+            <div class="header">
+                <img src="images/logo.png" width="124" height="23" alt="Elmasry Elyoum" />
+                <!--<div class="tabs">
                     <ul id="tabs-menu" class="tabs-header">
-<!--                        <li>SABQ NEWS</li>
-                        <li class="current">
-                            <span class="new-news">1</span>
-                            SABQ ARTICLES
-                        </li>-->
                     </ul>
-                </div>
+                </div>-->
             </div>
-            <div id="tabs-content" class="tabs-content">
-                <div class="news-box news-box-unread">
-                    <span class="unread"></span>
-                    <div class="box-news-left box-news-nophoto">
-                        <div class="box-news-title"><a href="">سبعة قتلى واكثر من خمسين جريحا في تفجيرين وسط الرمادي</a></div>
-                        <div class="box-news-brief">
-                            رانس 24 سبعة قتلى واكثر من خمسين جريحا في تفجيرين وسط الرمادي AFP الرمادي (العراق) (ا ف ب) - اعلنت مصادر في الشرطة واخرى طبية عراقية ...
-                        </div>
-                    </div>
-                </div>
-                
+            <div id="tabs-content" class="scrollable-content">
+            </div>
+            <div class="settings" style="height:23px; ">
+                <form action="" method="">
+<!--                    <input name="" type="text" />
+                    <input name="" type="submit" value="بحث"/>-->
+                <a id="settings">الاعدادات</a>
+                </form>
             </div>
         </div>
     </body>

@@ -26,13 +26,13 @@ var ReaderPOPUP={
      */
     menu:function(){
         var out='';
-        for(i=0; i<data.categories.length; i++){
-            if(data.categories[i].active == true){
-                out+='<li onclick="ReaderPOPUP.openCategory(this.id)" id="cat-'+data.categories[i].id+'">';
-                if(data.categories[i].unreaditems > 0){
-                    out+='<span class="new-news">'+data.categories[i].unreaditems+'</span>';
+        for(i=0; i<data.channels.length; i++){
+            if(data.channels[i].active == true){
+                out+='<li onclick="ReaderPOPUP.openCategory(this.id)" id="cat-'+data.channels[i].id+'">';
+                if(data.channels[i].unreaditems > 0){
+                    out+='<span class="new-news">'+data.channels[i].unreaditems+'</span>';
                 }
-                out+=data.categories[i].title;
+                out+=data.channels[i].title;
                 out+='</li>';
             }
         }
@@ -43,12 +43,12 @@ var ReaderPOPUP={
      */
     ReaderPOPUP:function(){
         data=JSON.parse(window.localStorage.data);
-        $("ul#tabs-menu").html(ReaderPOPUP.menu());
+        //$("ul#tabs-menu").html(ReaderPOPUP.menu());
         if(window.localStorage.lastTab){
             var lastTab=JSON.parse(window.localStorage.lastTab);
-            ReaderPOPUP.openCategory(lastTab.tabId);
+            ReaderPOPUP.openCategory(lastTab.id);
         }else{
-            $(document.getElementById('tabs-menu').firstChild).trigger('click');
+            $($('#tabs-menu').children()[0]).trigger('click');
         }
         chrome.browserAction.setBadgeText({
             text:""
@@ -59,21 +59,21 @@ var ReaderPOPUP={
      * open category from menu clicking.
      */
     openCategory:function(id){
-        if(!window.localStorage['rss-'+id]){
+        if(!window.localStorage['rss-cat-'+id]){
             $("#tabs-content").html('<center><br/><br/><br/><br/><br/><img align="center" src="images/loading.gif"/></center>');
             window.setTimeout("ReaderPOPUP.openCategory('"+id+"')", 1000);
             return;
         }
-        var cat=JSON.parse(window.localStorage['rss-'+id]);
+        var cat=JSON.parse(window.localStorage['rss-cat-'+id]);
         var rows=ReaderPOPUP.getrows(cat);
         $("#tabs-content").html(rows.out);
         var lastTab={
             tabId:id
         }
-        var dataid=parseInt(id.substr(4));
-        data.categories[dataid-1].unreaditems=0;
+        var dataid=parseInt(id);
+        data.channels[dataid-1].unreaditems=0;
         window.localStorage.data=JSON.stringify(data);
-        window.localStorage['rss-'+id]=JSON.stringify(rows.list);
+        window.localStorage['rss-cat-'+id]=JSON.stringify(rows.list);
         window.localStorage.lastTab=JSON.stringify(lastTab);
         ReaderPOPUP.setCurrentTab(id);
         
@@ -136,13 +136,13 @@ var ReaderPOPUP={
             $('#img-'+imgs[i].id).attr('src',imgs[i].src);
         }
     },
-    openURL:function(url){
-        chrome.tabs.create({
-            url:url,
-            selected:false
-        });
+    domEvents:function(url){
+        $("#settings").click(function(){
+            extension.openOptionPage();
+        })
     }
 }
 $(function(){
+    ReaderPOPUP.domEvents();
     ReaderPOPUP.ReaderPOPUP();
-})
+});
