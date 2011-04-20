@@ -26,7 +26,7 @@ var ReaderBG={
             error:function(XMLHttpRequest, textStatus, errorThrown){
             }
         });
-        /*$.ajax({
+    /*$.ajax({
             url:item.url,
             dataType:'json',
             success:function(rss){
@@ -42,18 +42,16 @@ var ReaderBG={
     updateRSS:function(){
         notifications=[];
         data=JSON.parse(window.localStorage.data);
-        for(var i=0;i<data.categories.length;i++){
-            if(data.categories[i].active==true){
-                            console.log(i)
-                ReaderBG.read(data.categories[i], function(rss,itemId){
-                    console.log(rss)
+        for(var i=0;i<data.channels.length;i++){
+            if(data.channels[i].active==true){
+                ReaderBG.read(data.channels[i], function(rss,itemId){
                     var origin=[];
                     if(window.localStorage['rss-cat-'+itemId]){
                         origin=JSON.parse(window.localStorage['rss-cat-'+itemId]);
                     }
                     var counter=ReaderBG.concatLists(origin, rss.items,'rss-cat-'+itemId);
                     ReaderBG.setBadgeText(counter);
-                    data.categories[itemId-1].unreaditems=counter;
+                    data.channels[itemId-1].unreaditems=counter;
                     window.localStorage.data=JSON.stringify(data);
                 });
             }
@@ -66,37 +64,38 @@ var ReaderBG={
     concatLists:function(origin,newlist,storeKey){
         var i=0;
         var counter=0;
+        var el;
         if(origin.length == 0){
             for(i=0;i<newlist.length;i++){
+                el=util.parseHTML(newlist[i].description);
                 var element={
                     title:newlist[i].title,
-                    //link:newlist[i].link,//http://sabq.org/sabq/user/news.do?section=5&id=18233
-                    link:'http://sabq.org/sabq/user/news.do?section='+newlist[i].sectionid+'&id='+newlist[i].id,
-                    description:newlist[i].subtitle,
-                    img:newlist[i].pic,
-                    newsid:newlist[i].id,
+                    link:newlist[i].link,
+                    description:util.cutText(el.description, 150, '.'),
+                    img:el.imgsrc,
+                    updated:new Date(newlist[i].updated).getTime(),
                     unread:true
                 }
                 origin.push(element);
             }
             counter=i;
             window.localStorage[storeKey]=JSON.stringify(origin);
+            origin[0].description=util.cutText(origin[0].description, 100);
             notifications.push(origin[0]);
             return counter;
         }
         i=0;
-        while(i < newlist.length && (origin[0].newsid != newlist[i].id)){
+        while(i < newlist.length && (origin[0].updated != newlist[i].updated)){
             i++;
         }
         while(i > 0){
+            el=util.parseHTML(newlist[i].description);
             origin.unshift({
                 title:newlist[i-1].title,
-                //link:newlist[i].link,
-                //description:newlist[i].description,
-                link:'http://sabq.org/sabq/user/news.do?section='+newlist[i-1].sectionid+'&id='+newlist[i-1].id,
-                description:newlist[i-1].subtitle,
-                img:newlist[i-1].pic,
-                newsid:newlist[i-1].id,
+                description:el.description,
+                img:el.imgsrc,
+                link:newlist[i].link,
+                updated:newlist[i-1].updated,
                 unread:true
             });
             origin.pop();
