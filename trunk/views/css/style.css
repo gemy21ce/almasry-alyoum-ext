@@ -1,6 +1,7 @@
 img {
 	border:0
 }
+
 .extention-container {
 	width:450px;
 	padding:10px;
@@ -21,6 +22,7 @@ img {
 	width:440px;
 	-webkit-border-radius: 5px;
 	padding:5px;
+	overflow:hidden;
 }
 /**---------- news Container ---------**/
 .scrollable-content, .videos-container {
@@ -234,3 +236,60 @@ background:url(../images/scroll_videos_piece.png) repeat-y;
 	padding-bottom:5px;
 	font-size:14px;
 	}
+/*slider style*/
+
+            .list_carousel {
+				float:right;
+				width:280px;
+				position:relative;
+               margin-right:25px;
+            }
+			
+            .list_carousel ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                display: block;
+				width: 300px !important;
+            }
+            .list_carousel li {
+                font-size: 12px;
+                font-family: tahoma;
+                padding: 0 5px;
+                float: left;
+            }
+			.list_carousel li a{
+				float:left;
+				height: 23px !important;
+				min-width:40px;
+				text-align:center;
+				line-height: 21px;
+				
+				}
+				.list_carousel li a:hover, .list_carousel li a.current {
+				
+				background: -webkit-gradient(linear, left top, left bottom, from(#f6f4e5), to(#dad7c4));
+				}
+            .clearfix {
+                float: none;
+                clear: both;
+            }
+            #prev1, #next1{
+                position:absolute;
+				top:5px;
+				right:-16px;
+				width:8px;
+				height:8px;
+				background:#dad7c4;
+				color:#FFF;
+				padding:3px;
+				font-size:14px;
+				-webkit-border-radius: 2px;
+				line-height: 4px;
+				text-decoration:none;
+            }
+            #next1 {
+             
+                
+				right: 270px;
+            }
