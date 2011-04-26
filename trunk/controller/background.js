@@ -149,3 +149,11 @@ var ReaderBG={
 $(function(){
     ReaderBG.ReaderBG();
 })
+
+function onRequest(request, sender, callback) {
+    if(request.action=='update'){
+        ReaderBG.updateRSS();
+    }
+}
+// Wire up the listener.
+chrome.extension.onRequest.addListener(onRequest);
