@@ -35,6 +35,9 @@ var MAYOptions=function(){
                 data.channels[parseInt(selected[i])-1].active=true
             }
             window.localStorage.data=JSON.stringify(data);
+            chrome.extension.sendRequest({
+                'action':'update'
+            });
         },
         domEvents:function(){
             $('#savesettings').click(function(){

@@ -84,6 +84,7 @@ var ReaderPOPUP={
     openCategory:function(id){
         $("#tab-multimedia").hide();
         $("#tabs-content").show();
+        ReaderPOPUP.setCurrentTab(id);
         if(!window.localStorage['rss-cat-'+id]){
             $("#tabs-content").html('<center><br/><br/><br/><br/><br/><img align="center" src="images/loading.gif"/></center>');
             ReaderPOPUP.openTimeout=window.setTimeout(function(){
@@ -105,7 +106,6 @@ var ReaderPOPUP={
         window.localStorage.data=JSON.stringify(data);
         window.localStorage['rss-cat-'+id]=JSON.stringify(rows.list);
         window.localStorage.lastTab=JSON.stringify(lastTab);
-        ReaderPOPUP.setCurrentTab(id);
         
         window.setTimeout(function(){
             ReaderPOPUP.removeUreadCountLable(id);
@@ -194,7 +194,7 @@ var ReaderPOPUP={
      */
     setCurrentTab:function(tabid){
         $('.current').removeClass('current');
-        $('#'+tabid).children('a').addClass('current');
+        $('#'+tabid).addClass('current');
     },
     /**
      * removed the unread items count from the tab.
