@@ -45,7 +45,7 @@
             prevBtn.setAttribute('title', options.prevText);
             prevBtn.setAttribute('class', options.prevClass);
             var prevA=document.createElement('span');
-            $(prevA).html('prev');
+            $(prevA).html('«');
             prevBtn.appendChild(prevA);
             obj.before(prevBtn);
             $(prevBtn).css('cursor','pointer');
@@ -57,7 +57,7 @@
             nextBtn.setAttribute('class', options.nextClass);
             var nextA=document.createElement('span');
             nextBtn.appendChild(nextA);
-            $(nextA).html('next');
+            $(nextA).html('»');
             obj.after(nextBtn);
             $(nextBtn).css('cursor','pointer');
 
