@@ -47,7 +47,7 @@ var ReaderPOPUP={
         data=JSON.parse(window.localStorage.data);
         $("ul#tabs-menu").html(ReaderPOPUP.menu()+$("ul#tabs-menu").html());
 
-        $("ul#tabs-menu").slider({maxItems:3});
+        $("ul#tabs-menu").slider({maxItems:4});
         /*$('ul#tabs-menu').carouFredSel({
             prev: '#prev1',
             next: '#next1',
