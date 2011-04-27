@@ -128,8 +128,8 @@ img {
 	line-height:10px;
 	padding:0 1px 2px 1px;
 	position:absolute;
-	left:-5px;
-	top:-8px;
+	left:0px;
+	top:0px;
 	height:10px;
 	border-radius:3px;
 	background: -webkit-gradient(linear, left top, left bottom, from(#cc4856), to(#990414));
@@ -251,6 +251,7 @@ img {
 	line-height: 33px;
 	margin: 0 2px;
 	font-size:12px;
+	position:relative;
 }
 .header ul li:hover, .header ul li.current {
 	background: -webkit-gradient(linear, left top, left bottom, from(#f6f4e5), to(#dad7c4));
