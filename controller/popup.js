@@ -86,7 +86,7 @@ var ReaderPOPUP={
         $("#tabs-content").show();
         ReaderPOPUP.setCurrentTab(id);
         if(!window.localStorage['rss-cat-'+id]){
-            $("#tabs-content").html('<center><br/><br/><br/><br/><br/><img align="center" src="images/loading.gif"/></center>');
+            $("#tabs-content").html('<center><br/><br/><br/><br/><br/><img align="center" src="images/elmasry_loader.gif"/></center>');
             ReaderPOPUP.openTimeout=window.setTimeout(function(){
                 ReaderPOPUP.openCategory(id);
             }, 1000);
