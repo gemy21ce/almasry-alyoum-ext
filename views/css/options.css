@@ -1,0 +1,130 @@
+/*-^- common style -^-*/ 
+body{
+	margin:0;
+	padding:0;
+	}
+.f{
+	float:right;
+	}
+.f-r{
+	float:left;
+	}
+/*-^- page style -^-*/ 
+.logo {
+	width:100%;
+	border-bottom: 5px solid #ab0202;
+	padding:25px 0;
+	direction:rtl;
+}
+.logo img{
+	margin-right:35px;
+	}
+.main-container{
+	width:880px;
+	padding:20px;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#000;
+	direction:rtl;
+	padding-bottom:100px;
+	}
+h1{
+	margin:0;
+	padding-bottom:10px;
+	}
+/* form style */
+.notification{
+	padding-bottom:30px;
+	border-bottom:1px solid #f0f0f0;
+	}
+.checkbox {
+    background: url(../images/checkbox.gif) no-repeat;
+    clear: left;
+    display: block;
+    float: left;
+    height: 19px;
+    padding: 0 5px 0 0;
+    width: 14px;
+	margin-left: 3px;
+	cursor:pointer;
+}
+.select {
+	position: absolute;
+	width: 188px;
+	height: 31px;
+	padding: 0 8px 0 24px;
+	color: white;
+	font: 12px/21px arial, sans-serif;
+	background: url(../images/select.png) no-repeat;
+	overflow: hidden;
+	text-align: right;
+	color: black;
+	line-height: 31px;
+}
+.styled {
+	height:31px !important;
+	width:220px !important;
+	direction:rtl;
+}
+.main-container label{
+	font-size: 20px;
+	font-weight:bold;
+	}
+.notification-label{
+	margin-right:200px;	
+	}
+/* scrolled area */
+.scrolled-area{
+	width:900px;
+	height:185px;
+	overflow-x:hidden;
+	overflow:auto;
+	padding:0 10px;
+	}
+.option{
+	width: 190px;
+	height:25px;
+	padding-top:5px;
+	padding-right: 10px;
+	border:1px solid #d4d4d4;
+	margin-left:20px;
+	margin-bottom:19px;
+	-webkit-border-radius: 5px;
+	font-weight:normal !important;
+	font-size:15px !important;
+	}
+.option label{
+	
+	}
+.scrolled-area::-webkit-scrollbar {
+    width: 12px;
+    height: 16px;
+    cursor:pointer;
+}
+.scrolled-area::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment {
+    height: 30px;
+    display: block;
+    background-color: transparent;
+    display:none;
+}
+.scrolled-area::-webkit-scrollbar-track-piece {
+    cursor:pointer;
+    background:url(../images/scroll-track.png) repeat-y;
+}
+.scrolled-area::-webkit-scrollbar-thumb:vertical {
+    height: 50px;
+    background:#000;
+    -webkit-border-radius: 7px;
+    cursor:pointer;
+}
+/* save */
+
+.save-button{
+	background:url(../images/disc.png) no-repeat left;
+	padding-left: 35px;
+	height:28px;
+	margin-left: -10px;
+	margin-top: 35px;
+	line-height:45px;
+	font-weight:bold;
+	cursor:pointer;
+	}
