@@ -22,6 +22,7 @@ var MAYOptions=function(){
         },
         save:function(){
             var selected=util.selectedRows();
+            window.localStorage.selectedChannels=selected.length;
             var data=JSON.parse(window.localStorage.data);
             for(j in data.channels){
                 data.channels[j].active=false;
@@ -38,14 +39,31 @@ var MAYOptions=function(){
         domEvents:function(){
             $('#savesettings').click(function(){
                 MAYOptions.save();
+                $('<div class="quick-alert">تم الحفظ</div>')
+                .insertAfter( $(this) )
+                .fadeIn('slow')
+                .animate({
+                    opacity: 1.0
+                }, 3000)
+                .fadeOut('slow', function() {
+                    $(this).remove();
+                });
             });
             $("#closeNotification").val(window.localStorage.closeNotification);
             $("#closeNotification").change(function(){
                 window.localStorage.closeNotification=this.value;
-            })
+            });
             $("#showNotification").val(window.localStorage.showNotification);
+            if(window.localStorage.showNotification == 'on'){
+                $("#notifControl").show();
+            }
             $("#showNotification").change(function(){
                 window.localStorage.showNotification=this.value;
+                if(this.value == 'on'){
+                    $("#notifControl").show();
+                }else{
+                    $("#notifControl").hide();
+                }
             });
         }
 
@@ -54,7 +72,7 @@ var MAYOptions=function(){
         MAYOptions.setChannels();
         MAYOptions.domEvents();
         if(! window.localStorage.showNotification){
-            window.localStorage.showNotification = 0;
+            window.localStorage.showNotification = 'off';
         }
         if(! window.localStorage.closeNotification){
             window.localStorage.closeNotification = 0;

@@ -9,20 +9,6 @@ and open the template in the editor.
         <link type="text/css" rel="stylesheet" href="css/options.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
-        <script type="text/javascript">
-   
-            $(document).ready(function() {
-                $('#show-alert').click(function() {
-                    $('<div class="quick-alert">تم الحفظ</div>')
-                    .insertAfter( $(this) )
-                    .fadeIn('slow')
-                    .animate({opacity: 1.0}, 3000)
-                    .fadeOut('slow', function() {
-                        $(this).remove();
-                    });
-                });
-            });
-        </script>
         <script type="text/javascript" src="../controller/options.js"></script>
         <script type="text/javascript" src="../controller/util.js"></script>
         <script type="text/javascript" src="js/custom-form-elements.js"></script>
@@ -43,29 +29,27 @@ and open the template in the editor.
             <div class="notification">
                 <label>إظهار التنبيهات</label>
                 <select id="showNotification" name="d" class="styled">
-                    <option value="0">معطل </option>
-                    <option value="-1">دائما</option>
-                    <option value="15">كل 15 دقيقة </option>
-                    <option value="30">كل 30 دقيقة </option>
-                    <option value="60">كل ساعة</option>
+                    <option value="off">معطل </option>
+                    <option value="on">مفعل</option>
                 </select>
 
-                <label class="notification-label">إخفاء التنبيهات</label>
-                <select id="closeNotification" name="e" class="styled" >
-                    <option value="0">يدوي </option>
-                    <option value="10">10 ثانية</option>
-                    <option value="20">20 ثانية</option>
-                    <option value="30">30 ثانية</option>
-                    <option value="40">40 ثانية</option>
-                    <option value="50">50 ثانية</option>
-                    <option value="60">60 ثانية</option>
-                </select>
-
+                <span id="notifControl" style="display: none;">
+                    <label class="notification-label">إخفاء التنبيهات</label>
+                    <select id="closeNotification" name="e" class="styled" >
+                        <option value="0">يدوي </option>
+                        <option value="10">10 ثانية</option>
+                        <option value="20">20 ثانية</option>
+                        <option value="30">30 ثانية</option>
+                        <option value="40">40 ثانية</option>
+                        <option value="50">50 ثانية</option>
+                        <option value="60">60 ثانية</option>
+                    </select>
+                </span>
             </div>
             <h1 style="margin-top:25px;">أقسام الجريدة</h1>
             <div id="channelList" class="scrolled-area">
             </div>
-            <a class="save-button f-r" id="show-alert">حفظ التعديلات</a>
+            <a class="save-button f-r" id="savesettings">حفظ التعديلات</a>
         </div>
 
     </body>

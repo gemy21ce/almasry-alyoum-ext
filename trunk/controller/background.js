@@ -12,7 +12,9 @@ var ReaderBG={
             window.localStorage.data=JSON.stringify(data);
         }
         ReaderBG.updateRSS();
-        window.setInterval('ReaderBG.updateRSS()', 1000 * 60 * 60);
+        window.setInterval(function(){
+            ReaderBG.updateRSS();
+        }, 1000 * 60 * 60);
     },
     /**
      * read from url and process handler on success.
@@ -129,10 +131,16 @@ var ReaderBG={
         notification.show();
     },
     runNotifications:function(){
+        if(window.localStorage.showNotification == 'off'){
+            return;
+        }
         if(notifications.length > 0){
-            ReaderBG.fireNotification(notifications[0].title, notifications[0].img, notifications[0].description, notifications[0].link, 10);
+            var close=window.localStorage.closeNotification;
+            ReaderBG.fireNotification(notifications[0].title, notifications[0].img, notifications[0].description, notifications[0].link, close==0?null:close);
             notifications.shift();
-            window.setTimeout("ReaderBG.runNotifications()", 1000 * 30);
+            window.setTimeout(function(){
+                ReaderBG.runNotifications();
+            }, 1000 * 30);
         }
     },
     setBadgeText:function(text){
@@ -140,6 +148,10 @@ var ReaderBG={
             window.localStorage.badgeText=0;
         }
         text+=parseInt(window.localStorage.badgeText);
+        var maxSelectedChannels=parseInt(window.localStorage.selectedChannels);
+        if(text > maxSelectedChannels * 10){
+            text = maxSelectedChannels * 10;
+        }
         window.localStorage.badgeText=text;
         chrome.browserAction.setBadgeText({
             text:""+(text==0?'':text)
@@ -148,6 +160,12 @@ var ReaderBG={
 }
 $(function(){
     ReaderBG.ReaderBG();
+    if(! window.localStorage.showNotification){
+        window.localStorage.showNotification = 'off';
+    }
+    if(! window.localStorage.closeNotification){
+        window.localStorage.closeNotification = 0;
+    }
 })
 
 function onRequest(request, sender, callback) {
