@@ -8,21 +8,17 @@ var MAYOptions=function(){
             channelsList:function(list){
                 var out='';
                 for(i in list){
-                    out+='<tr>';
-                    out+='<td>';
-                    out+='<input value="'+list[i].id+'" type="checkbox" '+(list[i].active ?'checked':'')+' name="channels"/>';
-                    out+='</td>';
-                    out+='<td>';
+                    out+='<span id="'+list[i].id+'" class="option f">';
+                    out+='<input value="'+list[i].id+'" id="ch-'+list[i].id+'" type="checkbox" '+(list[i].active ?'checked="true"':'')+' class="styled" name="channels"/>';
                     out+=list[i].title
-                    out+='</td>';
-                    out+='</tr>';
+                    out+='</span>';
                 }
                 return out;
             }
         },
         setChannels:function(){
             var data=JSON.parse(window.localStorage.data);
-            $("#channels").html(MAYOptions.htmlGenerators.channelsList(data.channels))
+            $("#channelList").html(MAYOptions.htmlGenerators.channelsList(data.channels));
         },
         save:function(){
             var selected=util.selectedRows();
@@ -42,13 +38,27 @@ var MAYOptions=function(){
         domEvents:function(){
             $('#savesettings').click(function(){
                 MAYOptions.save();
+            });
+            $("#closeNotification").val(window.localStorage.closeNotification);
+            $("#closeNotification").change(function(){
+                window.localStorage.closeNotification=this.value;
             })
+            $("#showNotification").val(window.localStorage.showNotification);
+            $("#showNotification").change(function(){
+                window.localStorage.showNotification=this.value;
+            });
         }
 
     }
     $(function(){
-        MAYOptions.domEvents();
         MAYOptions.setChannels();
+        MAYOptions.domEvents();
+        if(! window.localStorage.showNotification){
+            window.localStorage.showNotification = 0;
+        }
+        if(! window.localStorage.closeNotification){
+            window.localStorage.closeNotification = 0;
+        }
     });
     return MAYOptions;
 }

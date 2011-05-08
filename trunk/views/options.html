@@ -11,160 +11,61 @@ and open the template in the editor.
         <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
         <script type="text/javascript">
    
-			$(document).ready(function() {
-			$('#show-alert').click(function() {
-			$('<div class="quick-alert">تم الحفظ</div>')
-			.insertAfter( $(this) )
-			.fadeIn('slow')
-			.animate({opacity: 1.0}, 3000)
-			.fadeOut('slow', function() {
-			$(this).remove();
-		});
-	});
-});
+            $(document).ready(function() {
+                $('#show-alert').click(function() {
+                    $('<div class="quick-alert">تم الحفظ</div>')
+                    .insertAfter( $(this) )
+                    .fadeIn('slow')
+                    .animate({opacity: 1.0}, 3000)
+                    .fadeOut('slow', function() {
+                        $(this).remove();
+                    });
+                });
+            });
         </script>
         <script type="text/javascript" src="../controller/options.js"></script>
         <script type="text/javascript" src="../controller/util.js"></script>
         <script type="text/javascript" src="js/custom-form-elements.js"></script>
-        
-        
+
+
     </head>
     <body>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>القنوات</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody id="channels">
-
-            </tbody>
-
-        </table>
-        <table border="0">
-            <tr>
-                <td id="savesettings" style="cursor: pointer;">save</td>
-                <td></td>
-            </tr>
-        </table>
-        
         <!-- ****  logo **** -->
         <div class="logo">
-        	<img src="images/options_logo.png" width="218" height="38" alt="المصري اليوم">
+            <img src="images/options_logo.png" width="218" height="38" alt="المصري اليوم">
         </div>
-        
+
         <!-- ****  page content **** -->
         <div class="main-container f">
-        <h1>إعدادات عامه</h1>
-        
-        <!-- ****  notifications **** -->
-        <div class="notification">
-        <label>إظهار التنبيهات</label>
-        <select name="d" class="styled">
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-		</select>
-        
-        <label class="notification-label">إخفاء التنبيهات</label>
-        <select name="e" class="styled" >
-            <option value="4">Option 4</option>
-            <option value="5">Option 5</option>
-            <option value="6">Option 6</option>
-		</select>
+            <h1>إعدادات عامه</h1>
 
-        </div>
-        <h1 style="margin-top:25px;">أقسام الجريدة</h1>
-        <div class="scrolled-area">
-        	<span class="option f">
-            	<input type="checkbox" class="styled" />
-                أخبار الصفحة الأولي
-            </span>
-            <span class="option f">
-            	<input type="checkbox" class="styled" />
-            	اخبار
-            </span>
-            <span class="option f">
-            <input type="checkbox" class="styled" />
-            أخبار مصر
-            </span>
-            <span class="option f">
-            <input type="checkbox" class="styled" />
-            الحوادث
-            </span>
-            
-            <span class="option f">
-            	<input type="checkbox" class="styled" />
-                أخبار الصفحة الأولي
-            </span>
-            <span class="option f">
-            	<input type="checkbox" class="styled" />
-            	اخبار
-            </span>
-            <span class="option f">
-            <input type="checkbox" class="styled" />
-            أخبار مصر
-            </span>
-            <span class="option f">
-            <input type="checkbox" class="styled" />
-            الحوادث
-            </span>
-            
-            <span class="option f">
-            	<input type="checkbox" class="styled" />
-                أخبار الصفحة الأولي
-            </span>
-            <span class="option f">
-            	<input type="checkbox" class="styled" />
-            	اخبار
-            </span>
-            <span class="option f">
-            <input type="checkbox" class="styled" />
-            أخبار مصر
-            </span>
-            <span class="option f">
-            <input type="checkbox" class="styled" />
-            الحوادث
-            </span>
-            
-            <span class="option f">
-            	<input type="checkbox" class="styled" />
-                أخبار الصفحة الأولي
-            </span>
-            <span class="option f">
-            	<input type="checkbox" class="styled" />
-            	اخبار
-            </span>
-            <span class="option f">
-            <input type="checkbox" class="styled" />
-            أخبار مصر
-            </span>
-            <span class="option f">
-            <input type="checkbox" class="styled" />
-            الحوادث
-            </span>
-            
-            <span class="option f">
-            	<input type="checkbox" class="styled" />
-                أخبار الصفحة الأولي
-            </span>
-            <span class="option f">
-            	<input type="checkbox" class="styled" />
-            	اخبار
-            </span>
-            <span class="option f">
-            <input type="checkbox" class="styled" />
-            أخبار مصر
-            </span>
-            <span class="option f">
-            <input type="checkbox" class="styled" />
-            الحوادث
-            </span>
-            
-            
-        </div>
-        <a class="save-button f-r" id="show-alert">حفظ التعديلات</a>
+            <!-- ****  notifications **** -->
+            <div class="notification">
+                <label>إظهار التنبيهات</label>
+                <select id="showNotification" name="d" class="styled">
+                    <option value="0">معطل </option>
+                    <option value="-1">دائما</option>
+                    <option value="15">كل 15 دقيقة </option>
+                    <option value="30">كل 30 دقيقة </option>
+                    <option value="60">كل ساعة</option>
+                </select>
+
+                <label class="notification-label">إخفاء التنبيهات</label>
+                <select id="closeNotification" name="e" class="styled" >
+                    <option value="0">يدوي </option>
+                    <option value="10">10 ثانية</option>
+                    <option value="20">20 ثانية</option>
+                    <option value="30">30 ثانية</option>
+                    <option value="40">40 ثانية</option>
+                    <option value="50">50 ثانية</option>
+                    <option value="60">60 ثانية</option>
+                </select>
+
+            </div>
+            <h1 style="margin-top:25px;">أقسام الجريدة</h1>
+            <div id="channelList" class="scrolled-area">
+            </div>
+            <a class="save-button f-r" id="show-alert">حفظ التعديلات</a>
         </div>
 
     </body>
