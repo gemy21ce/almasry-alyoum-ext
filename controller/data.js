@@ -8,7 +8,7 @@ var data={
         title:'أخبار الصفحة الأولي',//sabq al ma7aleya
         url:'http://www.almasryalyoum.com/news_homepage_feed',
         unreaditems:0,
-        active:true,
+        active:false,
         lastItemPubDate:0,
         category:'news'
     },{
@@ -16,7 +16,7 @@ var data={
         title:'اخبار',
         url:'http://www.almasryalyoum.com/rss_feed_term/1/rss.xml',
         unreaditems:0,
-        active:false,
+        active:true,
         lastItemPubDate:0,
         category:'news'
     },{
