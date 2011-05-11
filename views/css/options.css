@@ -59,11 +59,13 @@ h1{
 	text-align: right;
 	color: black;
 	line-height: 31px;
+	font-size:15px;
 }
 .styled {
 	height:31px !important;
 	width:220px !important;
 	direction:rtl;
+	
 }
 .main-container label{
 	font-size: 20px;
