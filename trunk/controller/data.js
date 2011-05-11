@@ -5,18 +5,18 @@
 var data={
     channels:[{
         id:1,
-        title:'أخبار الصفحة الأولي',//sabq al ma7aleya
-        url:'http://www.almasryalyoum.com/news_homepage_feed',
-        unreaditems:0,
-        active:false,
-        lastItemPubDate:0,
-        category:'news'
-    },{
-        id:2,
         title:'اخبار',
         url:'http://www.almasryalyoum.com/rss_feed_term/1/rss.xml',
         unreaditems:0,
         active:true,
+        lastItemPubDate:0,
+        category:'news'
+    },{
+        id:2,
+        title:'أخبار الصفحة الأولي',
+        url:'http://www.almasryalyoum.com/news_homepage_feed',
+        unreaditems:0,
+        active:false,
         lastItemPubDate:0,
         category:'news'
     },{
