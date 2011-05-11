@@ -6,13 +6,13 @@
         <link href="css/style.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
         <script type="text/javascript">
-        	$(document).ready(function() {
-   				$('.dropdown-link').hover(function() {
-  				$('.dropdown-menu').stop(true,true).slideToggle('slow', function() {
+            $(document).ready(function() {
+                $('.dropdown-link').hover(function() {
+                    $('.dropdown-menu').stop(true,true).slideToggle('slow', function() {
     		
-  				});
-			});
-		});
+                    });
+                });
+            });
 			
 			
         </script>
@@ -35,18 +35,14 @@
                     <a id="prev1" style="cursor: pointer;">« </a>
                     <a id="next1" style="cursor: pointer;"> »</a>
                 </div>-->
-                <ul>
-                	<li><a href="">Ahmed Saad</a></li>
+                <ul  id="tabs-menu">
+                    <li><a href="">Ahmed Saad</a></li>
                     <li><a href="">Ahmed Khalil</a></li>
                     <li><a href="">Henedy</a></li>
                     <li><a href="">gamal</a></li>
                 </ul>
-                <div class="dropdown-link">
-                	<div class="dropdown-menu">
-                    	<a >أخبار الصفحة الأولي</a>
-                        <a >البترول والطاقة</a>
-                        <a >علوم وتكنولوجيا</a>
-                        <a >كمبيوتر وانترنت</a>
+                <div id="dropDown" style="display: none;" class="dropdown-link">
+                    <div id="dropDownItems" class="dropdown-menu">
                     </div>
                 </div>
             </div>

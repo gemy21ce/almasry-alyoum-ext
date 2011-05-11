@@ -38,6 +38,7 @@ var ReaderPOPUP={
                 out+='</li>';
             }
         }
+        out+='<li id="media"><a>ملتميديا</a></li>'
         return out;
     },
     /**
@@ -45,20 +46,14 @@ var ReaderPOPUP={
      */
     ReaderPOPUP:function(){
         data=JSON.parse(window.localStorage.data);
-        $("ul#tabs-menu").html(ReaderPOPUP.menu()+$("ul#tabs-menu").html());
+        $("ul#tabs-menu").html(ReaderPOPUP.menu());
 
-        $("ul#tabs-menu").slider({maxItems:4});
-        /*$('ul#tabs-menu').carouFredSel({
-            prev: '#prev1',
-            next: '#next1',
-            auto: false,
-            items:2,
-            circular    : false,
-            padding:'auto',
-            width:'250px',
-            infinite:false
-        });*/
-
+        var ils=$("ul#tabs-menu").children('li')
+        if(ils.length > 4){
+            $("#dropDown").show();
+            $("#dropDownItems").append(ils.slice(4));
+        }
+        
         if(window.localStorage.lastTab){
             var lastTab=JSON.parse(window.localStorage.lastTab);
             switch(lastTab.type){
