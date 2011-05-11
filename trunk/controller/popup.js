@@ -49,9 +49,17 @@ var ReaderPOPUP={
         $("ul#tabs-menu").html(ReaderPOPUP.menu());
 
         var ils=$("ul#tabs-menu").children('li')
-        if(ils.length > 4){
+        var ilswidth=0;
+        ils.slice(0, 4).each(function(){
+            ilswidth+=parseInt($(this).width());
+        });
+        var maxInrow=4;
+        if(ilswidth > 240){
+            maxInrow =3;
+        }
+        if(ils.length > maxInrow){
             $("#dropDown").show();
-            $("#dropDownItems").append(ils.slice(4));
+            $("#dropDownItems").append(ils.slice(maxInrow));
         }
         
         if(window.localStorage.lastTab){
