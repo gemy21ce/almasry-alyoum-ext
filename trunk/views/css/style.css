@@ -19,12 +19,15 @@ img {
 	float:right;
 	margin:5px;
 }
+a{
+	text-decoration:none;
+	}
 /**---------- header ---------**/
 .header {
 	background:#FFF;
 	width:450px;
 	-webkit-border-radius: 5px;
-	overflow:hidden;
+	float:right;
 	position:relative;
 }
 /**---------- news Container ---------**/
@@ -253,6 +256,9 @@ img {
 	font-size:12px;
 	position:relative;
 }
+.header ul li a{
+	color:#000000;
+	}
 .header ul li:hover, .header ul li.current {
 	background: -webkit-gradient(linear, left top, left bottom, from(#f6f4e5), to(#dad7c4));
 }
@@ -276,3 +282,33 @@ img {
 .nextBtn {
 	right: 425px;
 }
+.dropdown-link{
+	width:14px;
+	height:14px;
+	background:url(../images/dropdown_link.png) no-repeat;
+	float:right;
+	margin-top:10px;
+	position:relative;
+	margin-right:20px;
+	}
+.dropdown-menu{
+	background:#FFF;
+	-webkit-border-radius: 5px;
+	position:absolute;
+	top:11px;
+	left:0;
+	z-index:888;
+	border:1px solid #CCC;
+	display:none;
+	padding:5px;
+	}
+.dropdown-menu a{
+	float:right;
+	min-width:100px;
+	border-bottom:1px solid #dad7c4;
+	padding:5px;
+	}
+.dropdown-menu a:hover{
+	background:#dad7c4;
+	color:#FFF;
+	}
