@@ -221,6 +221,7 @@ var data={
         category:'news'
     }],
     mutlimedia:{
+        activ:false,
         video:{
             id:28,
             title:'فيديو',

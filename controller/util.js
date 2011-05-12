@@ -39,9 +39,9 @@ var util={
      * get alist of checked elements value in the page.
      * @return an array of checked elements values.
      */
-    selectedRows:function(){
+    selectedRows:function(name){
         var checked=[];
-        $(':checkbox').each(function(){
+        $('[name|="'+name+'"]:checkbox').each(function(){
             if(this.checked){
                 checked.push(this.value);
             }

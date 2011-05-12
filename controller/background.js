@@ -54,6 +54,8 @@ var ReaderBG={
                     ReaderBG.read(data.channels[i], ReaderBG.parseRSS);
                 }
             }
+        }
+        if(data.mutlimedia.acive){
             ReaderBG.read(data.mutlimedia.video, ReaderBG.parseRSS,'video');
             ReaderBG.read(data.mutlimedia.car, ReaderBG.parseRSS,'car');
         }
