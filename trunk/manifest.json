@@ -15,5 +15,5 @@
         "default_title": "Al masry al youm",
         "popup": "views/popup.html"
     },
-    "permissions": [ "http://*/*","notifications"]
+    "permissions": [ "http://www.almasryalyoum.com/*","notifications"]
 }
