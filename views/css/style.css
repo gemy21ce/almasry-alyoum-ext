@@ -283,7 +283,7 @@ a{
 .nextBtn {
 	right: 425px;
 }
-.dropdown-link{
+.dropdown-link {
 	width:20px;
 	height:20px;
 	background:url(../images/dropdown_link.png) no-repeat;
@@ -291,8 +291,9 @@ a{
 	margin-top:6px;
 	position:relative;
 	margin-right:20px;
+	cursor:pointer;
 	}
-.dropdown-menu{
+.dropdown-menu {
 	background:#FFF;
 	-webkit-border-radius: 5px;
 	position:absolute;
@@ -301,8 +302,44 @@ a{
 	z-index:888;
 	border:1px solid #CCC;
 	display:none;
-	padding:5px;
+	padding:10px 5px;;	
+		
 	}
+	.dropdown-menu-div {
+	overflow-x: hidden;
+	overflow-y: scroll;
+	max-height: 300px;
+	width: 130px;
+	
+	}
+/************* dropdown-menu scrollbar *************/
+
+.dropdown-menu-div::-webkit-scrollbar {
+ width: 5px;
+ height: 5px;
+ cursor:pointer;
+}
+.dropdown-menu-div::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment {
+ height: 30px;
+ display: block;
+ background-color: transparent;
+ display:none;
+}
+.dropdown-menu-div::-webkit-scrollbar-track-piece {
+ background:url(../images/scroll_drop_piece.png) repeat-y;
+ -webkit-border-radius:5px;
+ cursor:pointer;
+}
+.dropdown-menu-div::-webkit-scrollbar-thumb:vertical {
+ height: 50px;
+ background-color: #474747;
+ -webkit-border-radius: 5px;
+ cursor:pointer;
+}
+/**************************/
+.dropdown-menu ul{
+margin-right: 7px;
+}
 
 .dropdown-menu ul li{
 	float:right;
