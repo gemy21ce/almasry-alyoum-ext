@@ -38,7 +38,10 @@ var ReaderPOPUP={
                 out+='</li>';
             }
         }
-        out+='<li id="media"><a>ملتميديا</a></li>'
+        if(data.mutlimedia.active){
+            console.log(data.mutlimedia.active)
+            out+='<li id="media"><a>ملتميديا</a></li>';
+        }
         return out;
     },
     /**
@@ -70,7 +73,7 @@ var ReaderPOPUP={
                     break;
                 }
                 default : {
-                    ReaderPOPUP.openMutimediaTab();
+                    $($('#tabs-menu').children()[0]).trigger('click');
                 }
             }
         }else{

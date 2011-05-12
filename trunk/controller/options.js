@@ -14,14 +14,23 @@ var MAYOptions=function(){
                     out+='</span>';
                 }
                 return out;
+            },
+            multiMediaOption:function(active){
+                var out = "";
+                out+='<span id="multimedia" class="option f">';
+                out+='<input id="mutilOption" type="checkbox" '+(active ?'checked="true"':'')+' class="styled" />';
+                out+='ملتي ميديا'
+                out+='</span>';
+                return out;
             }
         },
         setChannels:function(){
             var data=JSON.parse(window.localStorage.data);
             $("#channelList").html(MAYOptions.htmlGenerators.channelsList(data.channels));
+            $("#channelList").append(MAYOptions.htmlGenerators.multiMediaOption(data.mutlimedia.active));
         },
         save:function(){
-            var selected=util.selectedRows();
+            var selected=util.selectedRows('channels');
             window.localStorage.selectedChannels=selected.length;
             var data=JSON.parse(window.localStorage.data);
             for(j in data.channels){
@@ -37,6 +46,7 @@ var MAYOptions=function(){
                     selected.splice($.inArray(selected[s], selected),1);
                 }
             }
+            data.mutlimedia.active=document.getElementById('mutilOption').checked;
             window.localStorage.data=JSON.stringify(data);
             chrome.extension.sendRequest({
                 action:'update',
