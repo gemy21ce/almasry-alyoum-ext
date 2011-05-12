@@ -23,6 +23,7 @@ jQuery.getFeed = function(options) {
             cache:false,
             data: options.data,
             dataType: 'xml',
+            timeout :1000 * 60 * 60 * 5,
             success: function(xml) {
                 var feed = new JFeed(xml);
                 if(jQuery.isFunction(options.success)) options.success(feed);
