@@ -178,7 +178,6 @@ $(function(){
 
 function onRequest(request, sender, callback) {
     if(request.action=='update'){
-        console.log(request.ob);
         ReaderBG.updateRSS(request.ob);
     }
 }

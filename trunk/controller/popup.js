@@ -138,8 +138,12 @@ var ReaderPOPUP={
         ReaderPOPUP.multiMedia(Item);
     },
     multiMedia:function(item){
+        $("#videoTab").html('<center><br/><br/><br/><br/><br/><img align="center" src="images/elmasry_loader.gif" style="margin-top:100px;"/></center>')
         if(! window.localStorage['rss-cat-'+item.id]){
-            ReaderPOPUP.ReaderPOPUP();
+            chrome.extension.sendRequest({
+                action:'update'
+            });
+            return;
         }
         var lastTab={
             type:'video'
@@ -223,6 +227,7 @@ var ReaderPOPUP={
             extension.openOptionPage();
         });
         $("#media").click(function(){
+            console.log('esh')
             ReaderPOPUP.openMutimediaTab();
         });
         $("#openVideo").click(function(){
