@@ -245,10 +245,3 @@ $(function(){
 
     
 });
-/*
-
-<ul style="cursor: pointer;" id="tabs-menu" class="user_interaction"><li onclick="ReaderPOPUP.openCategory(this.id)" id="1"><a>أخبار الصفحة الأولي</a></li><li onclick="ReaderPOPUP.openCategory(this.id)" id="2"><a>اخبار</a></li><li onclick="ReaderPOPUP.openCategory(this.id)" id="3"><a>أخبار مصر</a></li><li onclick="ReaderPOPUP.openCategory(this.id)" id="4"><a>الحوادث</a></li><li onclick="ReaderPOPUP.openCategory(this.id)" id="5"><a>الشارع السياسي</a></li><li onclick="ReaderPOPUP.openCategory(this.id)" id="6"><a>العالم</a></li><li onclick="ReaderPOPUP.openCategory(this.id)" id="7"><a>العالم العربي</a></li><li onclick="ReaderPOPUP.openCategory(this.id)" id="8"><a>اقتصاد</a></li><li onclick="ReaderPOPUP.openCategory(this.id)" id="9"><a>أسواق وشركات</a></li>
-                        <li id="media"><a class="current">ملتميديا</a></li>
-                    </ul>
-
- */

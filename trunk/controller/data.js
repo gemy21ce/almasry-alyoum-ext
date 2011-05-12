@@ -100,7 +100,7 @@ var data={
         lastItemPubDate:0,
         category:'news'
     },{
-        id:12,
+        id:13,
         title:'كرة مصرية',
         url:'http://www.almasryalyoum.com/rss_feed_term/19/rss.xml',
         unreaditems:0,
@@ -108,7 +108,7 @@ var data={
         lastItemPubDate:0,
         category:'news'
     },{
-        id:13,
+        id:14,
         title:'علوم وتكنولوجيا',
         url:'http://www.almasryalyoum.com/rss_feed_term/24/rss.xml',
         unreaditems:0,
@@ -116,7 +116,7 @@ var data={
         lastItemPubDate:0,
         category:'news'
     },{
-        id:14,
+        id:15,
         title:'طب وصحة',
         url:'http://www.almasryalyoum.com/rss_feed_term/26/rss.xml',
         unreaditems:0,
@@ -124,7 +124,7 @@ var data={
         lastItemPubDate:0,
         category:'news'
     },{
-        id:15,
+        id:16,
         title:'موبايل واتصالات',
         url:'http://www.almasryalyoum.com/rss_feed_term/29/rss.xml',
         unreaditems:0,
@@ -132,7 +132,7 @@ var data={
         lastItemPubDate:0,
         category:'news'
     },{
-        id:16,
+        id:17,
         title:'فن وثقافة',
         url:'http://www.almasryalyoum.com/rss_feed_term/30/rss.xml',
         unreaditems:0,
@@ -140,7 +140,7 @@ var data={
         lastItemPubDate:0,
         category:'news'
     },{
-        id:17,
+        id:18,
         title:'الناشر',
         url:'http://www.almasryalyoum.com/rss_feed_term/31/rss.xml',
         unreaditems:0,
@@ -148,7 +148,7 @@ var data={
         lastItemPubDate:0,
         category:'news'
     },{
-        id:18,
+        id:19,
         title:'تلفزيون',
         url:'http://www.almasryalyoum.com/rss_feed_term/32/rss.xml',
         unreaditems:0,
@@ -156,7 +156,7 @@ var data={
         lastItemPubDate:0,
         category:'news'
     },{
-        id:19,
+        id:20,
         title:'سينما',
         url:'http://www.almasryalyoum.com/rss_feed_term/33/rss.xml',
         unreaditems:0,
@@ -164,7 +164,7 @@ var data={
         lastItemPubDate:0,
         category:'news'
     },{
-        id:20,
+        id:21,
         title:'فنون',
         url:'http://www.almasryalyoum.com/rss_feed_term/34/rss.xml',
         unreaditems:0,
@@ -172,7 +172,7 @@ var data={
         lastItemPubDate:0,
         category:'news'
     },{
-        id:21,
+        id:22,
         title:'ملفات خاصة',
         url:'http://www.almasryalyoum.com/rss_feed_term/36/rss.xml',
         unreaditems:0,
@@ -180,7 +180,7 @@ var data={
         lastItemPubDate:0,
         category:'news'
     },{
-        id:22,
+        id:23,
         title:'تحقيقات',
         url:'http://www.almasryalyoum.com/rss_feed_term/37/rss.xml',
         unreaditems:0,
@@ -188,7 +188,7 @@ var data={
         lastItemPubDate:0,
         category:'news'
     },{
-        id:23,
+        id:24,
         title:'حوارات',
         url:'http://www.almasryalyoum.com/rss_feed_term/38/rss.xml',
         unreaditems:0,
@@ -196,7 +196,7 @@ var data={
         lastItemPubDate:0,
         category:'news'
     },{
-        id:24,
+        id:25,
         title:'ملفات هامه',
         url:'http://www.almasryalyoum.com/rss_feed_term/39/rss.xml',
         unreaditems:0,
@@ -204,7 +204,7 @@ var data={
         lastItemPubDate:0,
         category:'news'
     },{
-        id:25,
+        id:26,
         title:'الأخيرة',
         url:'http://www.almasryalyoum.com/rss_feed_term/5238/rss.xml',
         unreaditems:0,
@@ -212,7 +212,7 @@ var data={
         lastItemPubDate:0,
         category:'news'
     },{
-        id:26,
+        id:27,
         title:'تقارير المراسلين',
         url:'http://www.almasryalyoum.com/rss_feed_term/40703/rss.xml',
         unreaditems:0,
@@ -222,7 +222,7 @@ var data={
     }],
     mutlimedia:{
         video:{
-            id:27,
+            id:28,
             title:'فيديو',
             url:'http://www.almasryalyoum.com/rss_feed_video/rss.xml',
             unreaditems:0,
@@ -231,7 +231,7 @@ var data={
             category:'thumb'
         },
         car:{
-            id:28,
+            id:29,
             title:'كاريكاتير',
             url:'http://www.almasryalyoum.com/rss_feed_caricature/rss.xml',
             unreaditems:0,

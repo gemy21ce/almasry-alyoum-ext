@@ -25,15 +25,22 @@ var MAYOptions=function(){
             window.localStorage.selectedChannels=selected.length;
             var data=JSON.parse(window.localStorage.data);
             for(j in data.channels){
-                data.channels[j].active=false;
-                delete window.localStorage['rss-cat-'+data.channels[j].id];
+                if($.inArray(data.channels[j].id.toString(), selected) == -1){
+                    data.channels[j].active = false;
+                    delete window.localStorage['rss-cat-'+data.channels[j].id];
+                }else{
+                    data.channels[j].active = true;
+                }
             }
-            for(i in selected){
-                data.channels[parseInt(selected[i])-1].active=true
+            for(s in selected){
+                if(window.localStorage['rss-cat-'+selected[s]]){
+                    selected.splice($.inArray(selected[s], selected),1);
+                }
             }
             window.localStorage.data=JSON.stringify(data);
             chrome.extension.sendRequest({
-                'action':'update'
+                action:'update',
+                ob:selected
             });
         },
         domEvents:function(){
