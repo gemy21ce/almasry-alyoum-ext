@@ -41,16 +41,22 @@ var ReaderBG={
     /**
      * update method that will be called to update rss
      */
-    updateRSS:function(){
+    updateRSS:function(updated){
         notifications=[];
         data=JSON.parse(window.localStorage.data);
-        for(var i=0;i<data.channels.length;i++){
-            if(data.channels[i].active==true){
-                ReaderBG.read(data.channels[i], ReaderBG.parseRSS);
+        if(updated){
+            for(s in updated){
+                ReaderBG.read(data.channels[parseInt(updated[s])-1], ReaderBG.parseRSS);
             }
+        }else{
+            for(var i=0;i<data.channels.length;i++){
+                if(data.channels[i].active==true){
+                    ReaderBG.read(data.channels[i], ReaderBG.parseRSS);
+                }
+            }
+            ReaderBG.read(data.mutlimedia.video, ReaderBG.parseRSS,'video');
+            ReaderBG.read(data.mutlimedia.car, ReaderBG.parseRSS,'car');
         }
-        ReaderBG.read(data.mutlimedia.video, ReaderBG.parseRSS,'video');
-        ReaderBG.read(data.mutlimedia.car, ReaderBG.parseRSS,'car');
         window.setTimeout(function(){
             ReaderBG.runNotifications();
         }, 1000 * 60 );
@@ -170,7 +176,8 @@ $(function(){
 
 function onRequest(request, sender, callback) {
     if(request.action=='update'){
-        ReaderBG.updateRSS();
+        console.log(request.ob);
+        ReaderBG.updateRSS(request.ob);
     }
 }
 // Wire up the listener.
