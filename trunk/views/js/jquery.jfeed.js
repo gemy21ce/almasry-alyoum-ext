@@ -24,10 +24,12 @@ jQuery.getFeed = function(options) {
             data: options.data,
             dataType: 'xml',
             timeout :1000 * 60 * 60 * 5,
+            success:function(xml){
+                var feed = new JFeed(xml);
+                if(jQuery.isFunction(options.success)) options.success(feed);
+            },
             complete:function(jqXHR, textStatus){
-                if(jqXHR && jqXHR.status == 200){
-                    success(jqXHR.response)
-                }else if(jqXHR && jqXHR.status == 504){
+                if(jqXHR && jqXHR.status == 504){
                     window.setTimeout(function(){
                         $.ajax(ajaxOp);
                     }, 1000 * 10)
@@ -37,14 +39,10 @@ jQuery.getFeed = function(options) {
                 options.error(XMLHttpRequest, textStatus, errorThrown);
             }
         }
-        var success = function(xml){
-            var feed = new JFeed(xml);
-            if(jQuery.isFunction(options.success)) options.success(feed);
-        }
 
         $.ajax(ajaxOp);
 
-        /*$.ajax({
+    /*$.ajax({
             type: 'GET',
             url: options.url,
             cache:false,
@@ -131,7 +129,7 @@ JAtom.prototype = {
             item.description = jQuery(this).find('content').eq(0).text();
             item.updated = jQuery(this).find('updated').eq(0).text();
             item.id = jQuery(this).find('id').eq(0).text();
-            
+
             feed.items.push(item);
         });
     }
@@ -159,9 +157,9 @@ JRss.prototype  = {
         this.items = new Array();
         
         var feed = this;
-        
+
         jQuery('item', xml).each( function() {
-        
+
             var item = new JFeedItem();
             
             item.title = jQuery(this).find('title').eq(0).text();
@@ -169,7 +167,7 @@ JRss.prototype  = {
             item.description = jQuery(this).find('description').eq(0).text();
             item.updated = jQuery(this).find('pubDate').eq(0).text();
             item.id = jQuery(this).find('guid').eq(0).text();
-            
+
             feed.items.push(item);
         });
     }
