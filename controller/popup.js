@@ -39,7 +39,6 @@ var ReaderPOPUP={
             }
         }
         if(data.mutlimedia.active){
-            console.log(data.mutlimedia.active)
             out+='<li id="media"><a>ملتميديا</a></li>';
         }
         return out;
@@ -172,7 +171,7 @@ var ReaderPOPUP={
                 out+='<div class="news-photo"><img alt="'+list[i].title+'" id="img-'+i+'"></img></div>';
                 out+='<div class="box-news-left">';
             }
-            out+='<div class="box-news-title"><a style="cursor:pointer;" onclick="extension.openURL(\''+list[i].link+'\');">'+list[i].title+'</a></div>';
+            out+='<div class="box-news-title"><a style="cursor:pointer;" onclick="extension.openURL(\''+list[i].link+'\',false);">'+list[i].title+'</a></div>';
             out+='<div class="box-news-brief">';
             out+=ReaderPOPUP.cutText(list[i].description, 150, "...");
             out+='</div>';
@@ -191,7 +190,7 @@ var ReaderPOPUP={
         for(i in list){
             out+='<div class="video">';
             out+='<div onclick="extension.openURL(\''+list[i].link+'\');" class="video-title">'+list[i].title+'</div>';
-            out+='<div style="cursor: pointer;"><img onclick="extension.openURL(\''+list[i].link+'\');" src="'+list[i].img+'" width="154" height="86" /></div>';
+            out+='<div style="cursor: pointer;"><img onclick="extension.openURL(\''+list[i].link+'\',false);" src="'+list[i].img+'" width="154" height="86" /></div>';
             out+='</div>';
         }
         return {
