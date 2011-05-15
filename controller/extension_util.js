@@ -13,7 +13,10 @@ var extension={
         });
     },
     openOptionPage:function(){
-        extension.openURL(chrome.extension.getURL('views/options.html'), true);
+        chrome.tabs.create({
+            url:chrome.extension.getURL('views/options.html'),
+            selected:true
+        });
     }
 }
 
