@@ -13,8 +13,8 @@ var data={
         category:'news'
     },{
         id:2,
-        title:'أخبار الصفحة الأولي',
-        url:'http://www.almasryalyoum.com/news_homepage_feed',
+        title:'تقارير المراسلين',
+        url:'http://www.almasryalyoum.com/rss_feed_term/40703/rss.xml',
         unreaditems:0,
         active:false,
         lastItemPubDate:0,
@@ -213,15 +213,15 @@ var data={
         category:'news'
     },{
         id:27,
-        title:'تقارير المراسلين',
-        url:'http://www.almasryalyoum.com/rss_feed_term/40703/rss.xml',
+        title:'أخبار الصفحة الأولي',
+        url:'http://www.almasryalyoum.com/news_homepage_feed',
         unreaditems:0,
         active:false,
         lastItemPubDate:0,
         category:'news'
     }],
     mutlimedia:{
-        activ:false,
+        active:false,
         video:{
             id:28,
             title:'فيديو',

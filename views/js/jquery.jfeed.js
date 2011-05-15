@@ -17,7 +17,34 @@ jQuery.getFeed = function(options) {
 
     if(options.url) {
 
-        $.ajax({
+        var ajaxOp={
+            type:'GET',
+            url:options.url,
+            cache:false,
+            data: options.data,
+            dataType: 'xml',
+            timeout :1000 * 60 * 60 * 5,
+            complete:function(jqXHR, textStatus){
+                if(jqXHR && jqXHR.status == 200){
+                    success(jqXHR.response)
+                }else if(jqXHR && jqXHR.status == 504){
+                    window.setTimeout(function(){
+                        $.ajax(ajaxOp);
+                    }, 1000 * 10)
+                }
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+                options.error(XMLHttpRequest, textStatus, errorThrown);
+            }
+        }
+        var success = function(xml){
+            var feed = new JFeed(xml);
+            if(jQuery.isFunction(options.success)) options.success(feed);
+        }
+
+        $.ajax(ajaxOp);
+
+        /*$.ajax({
             type: 'GET',
             url: options.url,
             cache:false,
@@ -31,7 +58,7 @@ jQuery.getFeed = function(options) {
             error:function(XMLHttpRequest, textStatus, errorThrown){
                 options.error(XMLHttpRequest, textStatus, errorThrown);
             }
-        });
+        });*/
     }
 };
 
