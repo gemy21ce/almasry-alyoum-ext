@@ -190,7 +190,7 @@ var ReaderPOPUP={
         var out='';
         for(i in list){
             out+='<div class="video">';
-            out+='<div onclick="ReaderPOPUP.openURL(\''+list[i].link+'\');" class="video-title">'+list[i].title+'</div>';
+            out+='<div onclick="extension.openURL(\''+list[i].link+'\');" class="video-title">'+list[i].title+'</div>';
             out+='<div style="cursor: pointer;"><img onclick="extension.openURL(\''+list[i].link+'\');" src="'+list[i].img+'" width="154" height="86" /></div>';
             out+='</div>';
         }
@@ -227,7 +227,6 @@ var ReaderPOPUP={
             extension.openOptionPage();
         });
         $("#media").click(function(){
-            console.log('esh')
             ReaderPOPUP.openMutimediaTab();
         });
         $("#openVideo").click(function(){
