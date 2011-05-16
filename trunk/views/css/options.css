@@ -140,3 +140,11 @@ h1{
 	margin-left:40px;
 	font-weight:bold;
 	}
+.select-all{
+	float:left;
+	margin: -50px 0 10px -10px; 
+	border:1px solid #CCC;
+	padding:5px 5px 5px 0;
+	-webkit-border-radius: 5px;
+	width:120px;
+	}
