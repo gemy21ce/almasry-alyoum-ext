@@ -56,16 +56,16 @@ var MAYOptions=function(){
         domEvents:function(){
             $('#savesettings').click(function(){
                 MAYOptions.save();
-//                $('<div class="quick-alert">تم الح�?ظ</div>')
-//                .insertAfter( $(this) )
-//                .fadeIn('slow')
-//                .animate({
-//                    opacity: 1.0
-//                }, 3000)
-//                .fadeOut('slow', function() {
-//                    $(this).remove();
-//                });
-//              by shawary 15/05/2011 upon multi div creation issue
+                //                $('<div class="quick-alert">تم الح�?ظ</div>')
+                //                .insertAfter( $(this) )
+                //                .fadeIn('slow')
+                //                .animate({
+                //                    opacity: 1.0
+                //                }, 3000)
+                //                .fadeOut('slow', function() {
+                //                    $(this).remove();
+                //                });
+                //              by shawary 15/05/2011 upon multi div creation issue
                 $("#saveStatus").html('<div class="quick-alert">\u062a\u0645 \u0627\u0644\u062d\u0641\u0638</div>')
                 .fadeIn('slow')
                 .animate({
@@ -74,7 +74,7 @@ var MAYOptions=function(){
                 .fadeOut('slow', function() {
                     $(this).html("");
                 });
-                // end shawary
+            // end shawary
             });
             $("#closeNotification").val(window.localStorage.closeNotification);
             $("#closeNotification").change(function(){
@@ -90,6 +90,30 @@ var MAYOptions=function(){
                     $("#notifControl").show();
                 }else{
                     $("#notifControl").hide();
+                }
+            });
+            var checkall=true;
+            $(":checkbox.styled").each(function(){
+                if(! this.checked)
+                    checkall=false;
+            });
+            if(checkall){
+                $("#selectAllText").hide();
+                $("#deselectAllText").show();
+            }
+            $("#selectAllBox").attr('checked',checkall);
+            $("#selectAllBox").click(function(){
+                checked=this.checked;
+                $(":checkbox.styled").each(function(){
+                    this.checked = checked;
+                    $(this).trigger('change');
+                });
+                if(checked){
+                    $("#selectAllText").hide();
+                    $("#deselectAllText").show();
+                }else{
+                    $("#deselectAllText").hide();
+                    $("#selectAllText").show();
                 }
             });
         }
