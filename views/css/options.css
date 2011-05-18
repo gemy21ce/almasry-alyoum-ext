@@ -148,3 +148,6 @@ h1{
 	-webkit-border-radius: 5px;
 	width:120px;
 	}
+.select-all input[type='checkbox']{
+	float:left;
+}
