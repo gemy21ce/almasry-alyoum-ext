@@ -48,3 +48,7 @@ h1 {float:left;}
 	text-align:left;
 	padding: 0 24px 0 8px;
 }
+
+.select-all input[type='checkbox']{
+	float:right;
+}
