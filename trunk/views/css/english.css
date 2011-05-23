@@ -1,0 +1,28 @@
+.extention-container{
+	direction:ltr;
+	}
+.logo, .header ul li, .box-news-title{
+	float:left;
+}
+.box-news-title,.box-news-brief{
+	text-align:left;
+	}
+.dropdown-link{
+float:right;
+margin-right: 8px;
+}
+.dropdown-menu {
+	right: 0;
+	left:auto;
+}
+.news-photo{
+	float:left;
+	margin: 10px 0 0px 10px;
+	}
+.new-news{
+	right:0;
+	left:auto;
+	}
+#settings{
+	float:right;
+	}
