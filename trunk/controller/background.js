@@ -11,10 +11,26 @@ var ReaderBG={
         if(! window.localStorage.data){
             window.localStorage.data=JSON.stringify(data);
         }
+        if(! window.localStorage.data_en){
+            window.localStorage.data_en=JSON.stringify(data_en);
+        }
         ReaderBG.updateRSS();
         window.setInterval(function(){
             ReaderBG.updateRSS();
         }, 1000 * 60 * 60);
+        function getNavigatorLang (){
+            var lang=window.navigator.language;
+            if(lang.indexOf("ar")!= -1){
+                return 'ar';
+            }else if(lang.indexOf("en")!= -1){
+                return 'en';
+            }else{
+                return 'en';
+            }
+        }
+        if(! window.localStorage.lang){
+            window.localStorage.lang = getNavigatorLang();
+        }
     },
     /**
      * read from url and process handler on success.
@@ -43,7 +59,11 @@ var ReaderBG={
      */
     updateRSS:function(updated){
         notifications=[];
-        data=JSON.parse(window.localStorage.data);
+        if(window.localStorage.lang == 'ar'){
+            data=JSON.parse(window.localStorage.data);
+        }else{
+            data=JSON.parse(window.localStorage.data_en);
+        }
         if(updated){
             for(s in updated){
                 ReaderBG.read(data.channels[parseInt(updated[s])-1], ReaderBG.parseRSS);
@@ -71,13 +91,20 @@ var ReaderBG={
         var counter=ReaderBG.concatLists(origin, rss.items,'rss-cat-'+itemId);
         ReaderBG.setBadgeText(counter);
         var data=JSON.parse(window.localStorage.data);
-
+        if(window.localStorage.lang == 'en'){
+            data=JSON.parse(window.localStorage.data_en);
+        }
         if(type){
             data.mutlimedia[type].unreaditems=counter;
         }else{
             data.channels[itemId-1].unreaditems=counter;
         }
-        window.localStorage.data=JSON.stringify(data);
+        if(window.localStorage.lang == 'ar'){
+            window.localStorage.data=JSON.stringify(data);
+        }else{
+            window.localStorage.data_en=JSON.stringify(data);
+        }
+        
     },
     /**
      * concatenate lists and return the number of unread items.

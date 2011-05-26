@@ -1,54 +1,59 @@
 .logo, .main-container {
-	direction: ltr;
+    direction: ltr;
 }
 .logo img {
-	margin-left: 35px;
+    margin-left: 35px;
 }
 .f {
-	float:left;
+    float:left;
 }
 .f-r {
-	float:right;
+    float:right;
 }
 .select-all {
-	float: right;
-	margin: 20px -17px 10px 0px;
+    float: right;
+    margin: 20px -17px 10px 0px;
 }
 .save-button {
-	background: url(../images/disc.png) no-repeat right;
-	padding-right: 35px;
-	margin-right: -17px;
+    background: url(../images/disc.png) no-repeat right;
+    padding-right: 35px;
+    margin-right: -17px;
 }
 .main-container label {
-	float:left;
-	margin-right:20px;
-	}
+    float:left;
+    margin-right:20px;
+}
 .notification{
-	float:left;
-	width:100%;
-	}
+    float:left;
+    width:100%;
+}
 .notification-label {
-margin-right: 0px;
-margin-left: 200px;
+    margin-right: 0px;
+    margin-left: 200px;
 }
 select.styled {
-	float:left;
-	direction: ltr;
-	}
+    float:left;
+    direction: ltr;
+}
 h1 {float:left;}
 .checkbox {
     float: right;
-	}
+}
 .option{
-	padding-left: 5px;
-	padding-right:5px;
-	}
+    padding-left: 5px;
+    padding-right:5px;
+}
 .select {
-	background: url(../images/select-e.png) no-repeat;
-	text-align:left;
-	padding: 0 24px 0 8px;
+    background: url(../images/select-e.png) no-repeat;
+    text-align:left;
+    padding: 0 24px 0 8px;
 }
 
 .select-all input[type='checkbox']{
-	float:right;
+    float:right;
+}
+#lang {
+    float: right;
+    margin-left: 0px;
+    margin-right: 35px;
 }

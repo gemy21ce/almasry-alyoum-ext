@@ -151,3 +151,11 @@ h1{
 .select-all input[type='checkbox']{
 	float:left;
 }
+#lang {
+    float: left;
+margin-left: 35px;
+width: 144px;
+margin-top: 13px;
+padding: 5px;
+border: 1px solid #AB0202;
+}

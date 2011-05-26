@@ -47,7 +47,11 @@ var ReaderPOPUP={
      * constructor
      */
     ReaderPOPUP:function(){
-        data=JSON.parse(window.localStorage.data);
+        if(window.localStorage.lang == 'en'){
+            data=JSON.parse(window.localStorage.data_en);
+        }else{
+            data=JSON.parse(window.localStorage.data);
+        }
         $("ul#tabs-menu").html(ReaderPOPUP.menu());
 
         var ils=$("ul#tabs-menu").children('li')
@@ -108,7 +112,11 @@ var ReaderPOPUP={
         }
         var dataid=parseInt(id);
         data.channels[dataid-1].unreaditems=0;
-        window.localStorage.data=JSON.stringify(data);
+        if(window.localStorage.lang == 'ar'){
+            window.localStorage.data=JSON.stringify(data);
+        }else{
+            window.localStorage.data_en=JSON.stringify(data);
+        }
         window.localStorage['rss-cat-'+id]=JSON.stringify(rows.list);
         window.localStorage.lastTab=JSON.stringify(lastTab);
         

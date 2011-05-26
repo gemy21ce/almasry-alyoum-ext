@@ -7,10 +7,10 @@ and open the template in the editor.
     <head>
         <title></title>
         <link type="text/css" rel="stylesheet" href="css/options.css" />
-        <link type="text/css" rel="stylesheet" href="css/options-e.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
         <script type="text/javascript" src="../controller/options.js"></script>
+        <script type="text/javascript" src="../controller/locals.js"></script>
         <script type="text/javascript" src="../controller/util.js"></script>
         <script type="text/javascript" src="js/custom-form-elements.js"></script>
 
@@ -19,44 +19,51 @@ and open the template in the editor.
     <body>
         <!-- ****  logo **** -->
         <div class="logo">
-            <img src="images/options_logo-e.png" width="218" height="38" alt="المصري اليوم">
+            <img src="images/options_logo.png" width="218" height="38" alt="المصري اليوم">
+            
+            <select id="lang">
+                <option value="ar" local="arlang">Arabic</option>
+                <option value="en" local="enlang">English</option>
+            </select>
+        
         </div>
+        
 
         <!-- ****  page content **** -->
         <div class="main-container f">
-            <h1>إعدادات عامة</h1>
+            <h1 local="generalSettings">إعدادات عامة</h1>
 
             <!-- ****  notifications **** -->
             <div class="notification">
-                <label>إظهار التنبيهات</label>
+                <label local="showNotifications">إظهار التنبيهات</label>
                 <select id="showNotification" name="d" class="styled">
-                    <option value="off">معطل </option>
-                    <option value="on">مفعل</option>
+                    <option value="off" local="notOff">معطل </option>
+                    <option value="on" local="notOn">مفعل</option>
                 </select>
 
                 <span id="notifControl" style="display: none;">
-                    <label class="notification-label">إخفاء التنبيهات</label>
+                    <label class="notification-label" local="notificationTimeout">إخفاء التنبيهات</label>
                     <select id="closeNotification" name="e" class="styled" >
-                        <option value="0">يدوي </option>
-                        <option value="10">10 ثانية</option>
-                        <option value="20">20 ثانية</option>
-                        <option value="30">30 ثانية</option>
-                        <option value="40">40 ثانية</option>
-                        <option value="50">50 ثانية</option>
-                        <option value="60">60 ثانية</option>
+                        <option value="0" local="manual">يدوي </option>
+                        <option value="10" local="10times">10 ثانية</option>
+                        <option value="20" local="20times">20 ثانية</option>
+                        <option value="30" local="30times">30 ثانية</option>
+                        <option value="40" local="40times">40 ثانية</option>
+                        <option value="50" local="50times">50 ثانية</option>
+                        <option value="60" local="60times">60 ثانية</option>
                     </select>
                 </span>
             </div>
-            <h1 style="margin-top:25px;">اختر أخبارك</h1>
+            <h1 style="margin-top:25px;" local="chooseNews">اختر أخبارك</h1>
             <div  class="select-all"  />
             <input id="selectAllBox" type="checkbox" class="" />
-            <span id="selectAllText">اختيار الكل</span>
-            <span style="display: none;" id="deselectAllText">عدم اختيار الكل</span>
+            <span id="selectAllText" local="chooseAll">اختيار الكل</span>
+            <span style="display: none;" id="deselectAllText" local="chooseNone">عدم اختيار الكل</span>
 
         </div>
         <div id="channelList" class="scrolled-area">
         </div>
-        <a class="save-button f-r" id="savesettings">حفظ التعديلات</a>
+        <a class="save-button f-r" id="savesettings" local="saveChanges">حفظ التعديلات</a>
         <div id="saveStatus"> </div>
     </body>
 </html>
