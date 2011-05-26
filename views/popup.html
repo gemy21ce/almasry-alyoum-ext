@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>المصري اليوم</title>
         <link href="css/style.css" rel="stylesheet" type="text/css" />
-        <link href="css/english.css" rel="stylesheet" type="text/css" />
+<!--        <link href="css/english.css" rel="stylesheet" type="text/css" />-->
         <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
@@ -16,12 +16,17 @@
         <script type="text/javascript" src="js/jqSlider.js"></script>
         <script type="text/javascript" src="../controller/popup.js"></script>
         <script type="text/javascript" src="../controller/extension_util.js"></script>
+        <script type="text/javascript" src="../controller/locals.js"></script>
+        <script type="text/javascript">
+            RTLStyle="css/english.css";
+            Logo='images/logo-e.png';
+        </script>
     </head>
     <body>
         <div class="extention-container">
             <div class="header">
                 <div class="logo">
-                    <img src="images/logo-e.png" width="124" height="23" alt="Elmasry Elyoum" />
+                    <img src="images/logo.png" width="124" height="23" alt="Elmasry Elyoum" />
                 </div>
                 <ul  id="tabs-menu">
                 </ul>
@@ -50,7 +55,7 @@
                 <form action="" method="">
                     <!--                    <input name="" type="text" />
                                         <input name="" type="submit" value="بحث"/>-->
-                    <a id="settings">إعدادات عامة</a>
+                    <a id="settings" local="generalSettings">إعدادات عامة</a>
                 </form>
             </div>
 			
