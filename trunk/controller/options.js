@@ -34,6 +34,17 @@ var MAYOptions=function(){
         },
         save:function(){
             var selected=util.selectedRows('channels');
+            if(selected.length == 0){
+                $("#saveStatus").html('<div class="quick-alert">يجب أن تختار بعض الأخبار</div>')
+                .fadeIn('slow')
+                .animate({
+                    opacity: 1.0
+                }, 3000)
+                .fadeOut('slow', function() {
+                    $(this).html("");
+                });
+                return;
+            }
             window.localStorage.selectedChannels=selected.length;
             var data=JSON.parse(window.localStorage.data);
             if(window.localStorage.lang == 'en'){
@@ -63,28 +74,28 @@ var MAYOptions=function(){
                 action:'update',
                 ob:selected
             });
+            $("#saveStatus").html('<div class="quick-alert">\u062a\u0645 \u0627\u0644\u062d\u0641\u0638</div>')
+            .fadeIn('slow')
+            .animate({
+                opacity: 1.0
+            }, 3000)
+            .fadeOut('slow', function() {
+                $(this).html("");
+            });
         },
         domEvents:function(){
             $('#savesettings').click(function(){
                 MAYOptions.save();
-                //                $('<div class="quick-alert">تم الح�?ظ</div>')
-                //                .insertAfter( $(this) )
-                //                .fadeIn('slow')
-                //                .animate({
-                //                    opacity: 1.0
-                //                }, 3000)
-                //                .fadeOut('slow', function() {
-                //                    $(this).remove();
-                //                });
-                //              by shawary 15/05/2011 upon multi div creation issue
-                $("#saveStatus").html('<div class="quick-alert">\u062a\u0645 \u0627\u0644\u062d\u0641\u0638</div>')
-                .fadeIn('slow')
-                .animate({
-                    opacity: 1.0
-                }, 3000)
-                .fadeOut('slow', function() {
-                    $(this).html("");
-                });
+            //                $('<div class="quick-alert">تم الح�?ظ</div>')
+            //                .insertAfter( $(this) )
+            //                .fadeIn('slow')
+            //                .animate({
+            //                    opacity: 1.0
+            //                }, 3000)
+            //                .fadeOut('slow', function() {
+            //                    $(this).remove();
+            //                });
+            //              by shawary 15/05/2011 upon multi div creation issue
             // end shawary
             });
             $("#closeNotification").val(window.localStorage.closeNotification);
