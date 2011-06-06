@@ -58,9 +58,10 @@ var MAYOptions=function(){
                     data.channels[j].active = true;
                 }
             }
-            for(s in selected){
+            for(s=0; s < selected.length ; s++){
                 if(window.localStorage['rss-cat-'+selected[s]]){
                     selected.splice($.inArray(selected[s], selected),1);
+                    s--;
                 }
             }
             data.mutlimedia.active=document.getElementById('mutilOption').checked;
