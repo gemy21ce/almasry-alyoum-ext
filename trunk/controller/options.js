@@ -3,6 +3,10 @@
  * and open the template in the editor.
  */
 var MAYOptions=function(){
+    var data=JSON.parse(window.localStorage.data);
+    if(window.localStorage.lang == 'en'){
+        data=JSON.parse(window.localStorage.data_en);
+    }
     var MAYOptions={
         htmlGenerators:{
             channelsList:function(list){
@@ -87,17 +91,6 @@ var MAYOptions=function(){
         domEvents:function(){
             $('#savesettings').click(function(){
                 MAYOptions.save();
-            //                $('<div class="quick-alert">تم الح�?ظ</div>')
-            //                .insertAfter( $(this) )
-            //                .fadeIn('slow')
-            //                .animate({
-            //                    opacity: 1.0
-            //                }, 3000)
-            //                .fadeOut('slow', function() {
-            //                    $(this).remove();
-            //                });
-            //              by shawary 15/05/2011 upon multi div creation issue
-            // end shawary
             });
             $("#closeNotification").val(window.localStorage.closeNotification);
             $("#closeNotification").change(function(){
@@ -143,6 +136,10 @@ var MAYOptions=function(){
             $("#lang").val(window.localStorage.lang);
             $("#lang").change(function(){
                 window.localStorage.lang=this.value;
+                //delete old data.
+                for(j=0 ;j < data.channels.length ; j++){
+                    localStorage.removeItem('rss-cat-'+data.channels[j].id);
+                }
                 window.location.reload();
             });
         }
@@ -164,3 +161,14 @@ MAYOptions = new MAYOptions();
 //for( i in window.localStorage){
 //    delete window.localStorage[i];
 //}
+//localStorage.setItem("DATA", "m");
+//for(i=0 ; i<40 ; i++) {
+//    var data = localStorage.getItem("DATA");
+//    try {
+//        localStorage.setItem("DATA", data + data);
+//    } catch(e) {
+//        console.log("LIMIT REACHED: (" + i + ")");
+//        console.log(e);
+//    }
+//}
+//localStorage.removeItem("DATA");

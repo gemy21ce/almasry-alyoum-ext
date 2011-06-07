@@ -275,120 +275,119 @@ var data_en={
         active:false,
         lastItemPubDate:0,
         category:'news'
-    }
-    /*,{
+    },{
         id:5,
-        title:'',
-        url:'',
+        title:'Economy features',
+        url:'http://www.almasryalyoum.com/en/rss_feed_term/122/rss.xml',
         unreaditems:0,
         active:false,
         lastItemPubDate:0,
         category:'news'
     },{
         id:6,
-        title:'',
-        url:'',
+        title:'Art',
+        url:'http://www.almasryalyoum.com/en/rss_feed_term/133/rss.xml',
         unreaditems:0,
         active:false,
         lastItemPubDate:0,
         category:'news'
     },{
         id:7,
-        title:'',
-        url:'',
+        title:'Cinema',
+        url:'http://www.almasryalyoum.com/en/rss_feed_term/134/rss.xml',
         unreaditems:0,
         active:false,
         lastItemPubDate:0,
         category:'news'
     },{
         id:8,
-        title:'',
-        url:'',
+        title:'Local press review',
+        url:'http://www.almasryalyoum.com/en/rss_feed_term/147/rss.xml',
         unreaditems:0,
         active:false,
         lastItemPubDate:0,
         category:'news'
     },{
         id:9,
-        title:'',
-        url:'',
+        title:'Media features',
+        url:'http://www.almasryalyoum.com/en/rss_feed_term/148/rss.xml',
         unreaditems:0,
         active:false,
         lastItemPubDate:0,
         category:'news'
     },{
         id:10,
-        title:'',
-        url:'',
+        title:'Travel features',
+        url:'http://www.almasryalyoum.com/en/rss_feed_term/153/rss.xml',
         unreaditems:0,
         active:false,
         lastItemPubDate:0,
         category:'news'
     },{
         id:11,
-        title:'',
-        url:'',
+        title:'Economy news',
+        url:'http://www.almasryalyoum.com/en/rss_feed_term/186/rss.xml',
         unreaditems:0,
         active:false,
         lastItemPubDate:0,
         category:'news'
     },{
         id:12,
-        title:'',
-        url:'',
+        title:'Environment features',
+        url:'http://www.almasryalyoum.com/en/rss_feed_term/189/rss.xml',
         unreaditems:0,
         active:false,
         lastItemPubDate:0,
         category:'news'
     },{
         id:13,
-        title:'',
-        url:'',
+        title:'Environment news',
+        url:'http://www.almasryalyoum.com/en/rss_feed_term/190/rss.xml',
         unreaditems:0,
         active:false,
         lastItemPubDate:0,
         category:'news'
     },{
         id:14,
-        title:'',
-        url:'',
+        title:'World news',
+        url:'http://www.almasryalyoum.com/en/rss_feed_term/192/rss.xml',
         unreaditems:0,
         active:false,
         lastItemPubDate:0,
         category:'news'
     },{
         id:15,
-        title:'',
-        url:'',
+        title:'World features',
+        url:'http://www.almasryalyoum.com/en/rss_feed_term/194/rss.xml',
         unreaditems:0,
         active:false,
         lastItemPubDate:0,
         category:'news'
     },{
         id:16,
-        title:'',
-        url:'',
+        title:'Health',
+        url:'http://www.almasryalyoum.com/en/rss_feed_term/197/rss.xml',
         unreaditems:0,
         active:false,
         lastItemPubDate:0,
         category:'news'
     },{
         id:17,
-        title:'',
-        url:'',
+        title:'Society',
+        url:'http://www.almasryalyoum.com/en/rss_feed_term/199/rss.xml',
         unreaditems:0,
         active:false,
         lastItemPubDate:0,
         category:'news'
     },{
         id:18,
-        title:'',
-        url:'',
+        title:'Fashion',
+        url:'http://www.almasryalyoum.com/en/rss_feed_term/200/rss.xml',
         unreaditems:0,
         active:false,
         lastItemPubDate:0,
         category:'news'
-    },{
+    }/*,{
         id:19,
         title:'',
         url:'',
