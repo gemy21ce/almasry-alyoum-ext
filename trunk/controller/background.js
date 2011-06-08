@@ -14,6 +14,9 @@ var ReaderBG={
         if(! window.localStorage.data_en){
             window.localStorage.data_en=JSON.stringify(data_en);
         }
+        if(! window.localStorage.dataOrder){
+            window.localStorage.dataOrder = null;
+        }
         ReaderBG.updateRSS();
         window.setInterval(function(){
             ReaderBG.updateRSS();

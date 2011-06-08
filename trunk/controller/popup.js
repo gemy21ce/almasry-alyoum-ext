@@ -24,22 +24,44 @@ var ReaderPOPUP={
     /**
      * get the menu items.
      */
-    menu:function(){
+    menu:function(order){
         var out='';
-        for(i=0; i<data.channels.length; i++){
-            if(data.channels[i].active == true && data.channels[i].category == 'news'){
-                out+='<li onclick="ReaderPOPUP.openCategory(this.id)" id="'+data.channels[i].id+'">';
-                if(data.channels[i].unreaditems > 0){
-                    out+='<span class="new-news">'+data.channels[i].unreaditems+'</span>';
+        var channels=data.channels;
+        if(order){
+            for(z=0; z < order.length -1; z++){
+                if(isNaN(order[z])){
+                    if(data.mutlimedia.active){
+                        out+='<li id="media"><a>ملتميديا</a></li>';
+                    }
+                    continue;
                 }
-                out+='<a>';
-                out+=data.channels[i].title;
-                out+='</a>';
-                out+='</li>';
+                if(channels[parseInt(order[z])-1].active == true){
+                    out+='<li onclick="ReaderPOPUP.openCategory(this.id)" id="'+channels[parseInt(order[z])-1].id+'">';
+                    if(channels[parseInt(order[z])-1].unreaditems > 0){
+                        out+='<span class="new-news">'+channels[parseInt(order[z])-1].unreaditems+'</span>';
+                    }
+                    out+='<a>';
+                    out+=channels[parseInt(order[z])-1].title;
+                    out+='</a>';
+                    out+='</li>';
+                }
             }
-        }
-        if(data.mutlimedia.active){
-            out+='<li id="media"><a>ملتميديا</a></li>';
+        }else{
+            for(i=0; i<channels.length; i++){
+                if(data.channels[i].active == true && channels[i].category == 'news'){
+                    out+='<li onclick="ReaderPOPUP.openCategory(this.id)" id="'+channels[i].id+'">';
+                    if(channels[i].unreaditems > 0){
+                        out+='<span class="new-news">'+channels[i].unreaditems+'</span>';
+                    }
+                    out+='<a>';
+                    out+=channels[i].title;
+                    out+='</a>';
+                    out+='</li>';
+                }
+            }
+            if(data.mutlimedia.active){
+                out+='<li id="media"><a>ملتميديا</a></li>';
+            }
         }
         return out;
     },
@@ -52,7 +74,8 @@ var ReaderPOPUP={
         }else{
             data=JSON.parse(window.localStorage.data);
         }
-        $("ul#tabs-menu").html(ReaderPOPUP.menu());
+        var dataOrder = JSON.parse(window.localStorage.dataOrder);
+        $("ul#tabs-menu").html(ReaderPOPUP.menu(dataOrder));
 
         var ils=$("ul#tabs-menu").children('li')
         var ilswidth=0;

@@ -9,13 +9,26 @@ var MAYOptions=function(){
     }
     var MAYOptions={
         htmlGenerators:{
-            channelsList:function(list){
+            channelsList:function(list,order){
                 var out='';
-                for(i in list){
-                    out+='<span id="'+list[i].id+'" class="option f">';
-                    out+='<input value="'+list[i].id+'" id="ch-'+list[i].id+'" type="checkbox" '+(list[i].active ?'checked="true"':'')+' class="styled" name="channels"/>';
-                    out+=list[i].title
-                    out+='</span>';
+                if(order){
+                    for(z=0; z < order.length ; z++){
+                        if(isNaN(order[z])){
+                            out+=MAYOptions.htmlGenerators.multiMediaOption(data.mutlimedia.active);
+                            continue;
+                        }
+                        out+='<span id="'+list[parseInt(order[z])-1].id+'" class="option f">';
+                        out+='<input value="'+list[parseInt(order[z])-1].id+'" id="ch-'+list[parseInt(order[z])-1].id+'" type="checkbox" '+(list[parseInt(order[z])-1].active ?'checked="true"':'')+' class="styled" name="channels"/>';
+                        out+=list[parseInt(order[z])-1].title
+                        out+='</span>';
+                    }
+                }else{
+                    for(i in list){
+                        out+='<span id="'+list[i].id+'" class="option f">';
+                        out+='<input value="'+list[i].id+'" id="ch-'+list[i].id+'" type="checkbox" '+(list[i].active ?'checked="true"':'')+' class="styled" name="channels"/>';
+                        out+=list[i].title
+                        out+='</span>';
+                    }
                 }
                 return out;
             },
@@ -30,13 +43,16 @@ var MAYOptions=function(){
         },
         setChannels:function(){
             var data=JSON.parse(window.localStorage.data);
+            var dataOrder = JSON.parse(window.localStorage.dataOrder);
             if(window.localStorage.lang == 'en'){
                 data=JSON.parse(window.localStorage.data_en);
             }
-            $("#channelList").html(MAYOptions.htmlGenerators.channelsList(data.channels));
-            $("#channelList").append(MAYOptions.htmlGenerators.multiMediaOption(data.mutlimedia.active));
+            $("#channelList").html(MAYOptions.htmlGenerators.channelsList(data.channels,dataOrder));
+            //$("#channelList").append(MAYOptions.htmlGenerators.multiMediaOption(data.mutlimedia.active));
+            $( "#channelList" ).sortable();
         },
         save:function(){
+            window.localStorage.dataOrder=JSON.stringify($('#channelList').sortable('toArray'));
             var selected=util.selectedRows('channels');
             if(selected.length == 0){
                 $("#saveStatus").html('<div class="quick-alert">يجب أن تختار بعض الأخبار</div>')
@@ -142,6 +158,18 @@ var MAYOptions=function(){
                 }
                 window.location.reload();
             });
+        },
+        /**
+         * returns the selected channels Orderd.
+         */
+        orderedSelectedChannels:function(list){
+            var selected = new Array();
+            for(z in list){
+                if($("#"+list[z]+" > input").attr('checked')){
+                    selected.push(list[z]);
+                }
+            }
+            return selected;
         }
 
     }
