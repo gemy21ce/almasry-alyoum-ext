@@ -93,6 +93,7 @@ h1{
 	-webkit-border-radius: 5px;
 	font-weight:normal !important;
 	font-size:15px !important;
+        cursor: pointer;
 	}
 .option label{
 	
