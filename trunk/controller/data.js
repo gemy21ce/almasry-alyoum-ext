@@ -221,6 +221,7 @@ var data={
         category:'news'
     }],
     mutlimedia:{
+        title:"ملتي ميديا",
         active:false,
         video:{
             id:28,
@@ -461,6 +462,7 @@ var data_en={
         category:'news'
     }*/],
     mutlimedia:{
+        title:"multimedia",
         active:false,
         video:{
             id:28,
