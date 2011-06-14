@@ -23,13 +23,15 @@ var Mylocals={
         "chooseNews":"اختر أخبارك",
         "chooseAll":"اختيار الكل",
         "chooseNone":"عدم اختيار الكل",
-        "saveChanges":"حفظ التعديلات"
+        "saveChanges":"حفظ التعديلات",
+        "savingdone":"تم الحفظ",
+        "youhavetochoose":"يجب أن تختار بعض الأخبار"
     },
     en:{
         "arlang":"عربي",
         "enlang":"English",
         "generalSettings":"General Settings",
-        "showNotifications":"Show Alerts",
+        "showNotifications":"Alerts",
         "notOff":"Disabled",
         "notOn":"Enabled",
         "notificationTimeout":"Hide Alerts",
@@ -43,7 +45,9 @@ var Mylocals={
         "chooseNews":"Choose Categories",
         "chooseAll":"Select All",
         "chooseNone":"Deselect All",
-        "saveChanges":"Save Changes"
+        "saveChanges":"Save Changes",
+        "savingdone":"saving done",
+        "youhavetochoose":"You have to choose one section at least"
     }
 }
 var RTLStyle='css/options-e.css';
