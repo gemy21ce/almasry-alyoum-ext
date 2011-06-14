@@ -59,13 +59,13 @@ var MAYOptions=function(){
             window.localStorage.dataOrder=JSON.stringify($('#channelList').sortable('toArray'));
             var selected=util.selectedRows('channels');
             if(selected.length == 0){
-                $("#saveStatus").html('<div class="quick-alert">يجب أن تختار بعض الأخبار</div>')
+                $("#notsavedStatus").show()
                 .fadeIn('slow')
                 .animate({
                     opacity: 1.0
                 }, 3000)
                 .fadeOut('slow', function() {
-                    $(this).html("");
+                    $(this).hide();
                 });
                 return;
             }
@@ -99,13 +99,13 @@ var MAYOptions=function(){
                 action:'update',
                 ob:selected
             });
-            $("#saveStatus").html('<div class="quick-alert">\u062a\u0645 \u0627\u0644\u062d\u0641\u0638</div>')
+            $("#saveStatus").show()
             .fadeIn('slow')
             .animate({
                 opacity: 1.0
             }, 3000)
             .fadeOut('slow', function() {
-                $(this).html("");
+                $(this).hide();
             });
         },
         domEvents:function(){
