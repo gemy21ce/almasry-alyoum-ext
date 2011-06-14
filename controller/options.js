@@ -14,7 +14,7 @@ var MAYOptions=function(){
                 if(order){
                     for(z=0; z < order.length ; z++){
                         if(isNaN(order[z])){
-                            out+=MAYOptions.htmlGenerators.multiMediaOption(data.mutlimedia.active);
+                            out+=MAYOptions.htmlGenerators.multiMediaOption(data.mutlimedia);
                             continue;
                         }
                         out+='<span id="'+list[parseInt(order[z])-1].id+'" class="option f">';
@@ -29,21 +29,25 @@ var MAYOptions=function(){
                         out+=list[i].title
                         out+='</span>';
                     }
+                    out+=MAYOptions.htmlGenerators.multiMediaOption(data.mutlimedia);
                 }
                 return out;
             },
-            multiMediaOption:function(active){
+            multiMediaOption:function(multiMedia){
                 var out = "";
                 out+='<span id="multimedia" class="option f">';
-                out+='<input id="mutilOption" type="checkbox" '+(active ?'checked="true"':'')+' class="styled" />';
-                out+='ملتي ميديا'
+                out+='<input id="mutilOption" type="checkbox" '+(multiMedia.active ?'checked="true"':'')+' class="styled" />';
+                out+=multiMedia.title
                 out+='</span>';
                 return out;
             }
         },
         setChannels:function(){
             var data=JSON.parse(window.localStorage.data);
-            var dataOrder = JSON.parse(window.localStorage.dataOrder);
+            var dataOrder = null;
+            if(window.localStorage.dataOrder){
+                dataOrder =JSON.parse(window.localStorage.dataOrder);
+            }
             if(window.localStorage.lang == 'en'){
                 data=JSON.parse(window.localStorage.data_en);
             }
@@ -156,6 +160,7 @@ var MAYOptions=function(){
                 for(j=0 ;j < data.channels.length ; j++){
                     localStorage.removeItem('rss-cat-'+data.channels[j].id);
                 }
+                localStorage.removeItem("dataOrder");
                 window.location.reload();
             });
         },
