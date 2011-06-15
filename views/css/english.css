@@ -26,17 +26,3 @@
 #settings{
     float:right;
 }
-.drag-hint{
-    float: right;
-    border: 1px solid #AB0202;
-    padding: 5px;
-    margin-right: 74px;
-    margin-top: 20px;
-    position: relative;
-}
-.drag-hint img{
-
-    position: absolute;
-    top: -12px;
-    right: -1px;
-}
