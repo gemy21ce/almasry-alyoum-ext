@@ -9,7 +9,7 @@ var Mylocals={
         "arlang":"عربي",
         "enlang":"English",
         "generalSettings":"إعدادات عامة",
-        "showNotifications":"إظهار التنبيهات",
+        "showNotifications":"التنبيهات",
         "notOff":"معطل",
         "notOn":"مفعل",
         "notificationTimeout":"إخفاء التنبيهات",
@@ -25,7 +25,8 @@ var Mylocals={
         "chooseNone":"عدم اختيار الكل",
         "saveChanges":"حفظ التعديلات",
         "savingdone":"تم الحفظ",
-        "youhavetochoose":"يجب أن تختار بعض الأخبار"
+        "youhavetochoose":"يجب أن تختار بعض الأخبار",
+        "dragnote":"اسحب واسقط لترتيب الاخبار"
     },
     en:{
         "arlang":"عربي",
@@ -47,7 +48,8 @@ var Mylocals={
         "chooseNone":"Deselect All",
         "saveChanges":"Save Changes",
         "savingdone":"saving done",
-        "youhavetochoose":"You have to choose one section at least"
+        "youhavetochoose":"You have to choose one section at least",
+        "dragnote":"drag and drop items to reorder sections"
     }
 }
 var RTLStyle='css/options-e.css';

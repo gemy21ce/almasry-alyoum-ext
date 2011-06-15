@@ -163,6 +163,10 @@ var MAYOptions=function(){
                 localStorage.removeItem("dataOrder");
                 window.location.reload();
             });
+
+            $("#closedragNote").click(function(){
+                $("#dragNote").fadeOut(1000);
+            })
         },
         /**
          * returns the selected channels Orderd.

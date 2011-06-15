@@ -83,7 +83,7 @@ var ReaderPOPUP={
             ilswidth+=parseInt($(this).width());
         });
         var maxInrow=4;
-        if(ilswidth > 240){
+        if(ilswidth > 225){
             maxInrow =3;
         }
         if(ils.length > maxInrow){
@@ -93,14 +93,10 @@ var ReaderPOPUP={
         
         if(window.localStorage.lastTab){
             var lastTab=JSON.parse(window.localStorage.lastTab);
-            switch(lastTab.type){
-                case 'news':{
-                    ReaderPOPUP.openCategory(lastTab.id);
-                    break;
-                }
-                default : {
-                    $($('#tabs-menu').children()[0]).trigger('click');
-                }
+            if(lastTab.type == 'news' && window.localStorage['rss-cat-'+lastTab.id]){
+                ReaderPOPUP.openCategory(lastTab.id);
+            }else{
+                $($('#tabs-menu').children()[0]).trigger('click');
             }
         }else{
             $($('#tabs-menu').children()[0]).trigger('click');
