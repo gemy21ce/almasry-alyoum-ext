@@ -26,7 +26,8 @@ var Mylocals={
         "saveChanges":"حفظ التعديلات",
         "savingdone":"تم الحفظ",
         "youhavetochoose":"يجب أن تختار بعض الأخبار",
-        "dragnote":"اسحب واسقط لترتيب الاخبار"
+        "dragnote":"اسحب واسقط لترتيب الاخبار",
+        "noresult":"لا يوجدأخبار لهذه الكلمة المفتاحية متوفرة في الوقت الحالي"
     },
     en:{
         "arlang":"عربي",
@@ -49,7 +50,8 @@ var Mylocals={
         "saveChanges":"Save Changes",
         "savingdone":"saving done",
         "youhavetochoose":"You have to choose one section at least",
-        "dragnote":"drag and drop items to reorder sections"
+        "dragnote":"drag and drop items to reorder sections",
+        "noresult":"no search result."
     }
 }
 var RTLStyle='css/options-e.css';

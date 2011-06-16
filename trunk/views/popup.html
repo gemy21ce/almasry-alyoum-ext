@@ -52,13 +52,16 @@
                 </div>
             </div>
             <div class="settings" style="height:23px; ">
-                <form action="" method="">
-                    <!--                    <input name="" type="text" />
-                                        <input name="" type="submit" value="بحث"/>-->
+                <form action="" id="searchForm" method="" onsubmit="return false;">
+                    <input name="" id="searchText" type="text" />
+                    <input name="" id="search" type="submit" value="بحث"/>
                     <a id="settings" local="generalSettings">إعدادات عامة</a>
                 </form>
             </div>
 			
+        </div>
+        <div style="display: none;" id="noresult">
+            <div style="padding: 170px 0px; text-align: center; font-size: 18px;" local="noresult"></div>
         </div>
     </body>
 </html>

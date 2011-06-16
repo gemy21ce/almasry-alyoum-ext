@@ -2,6 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+var background=chrome.extension.getBackgroundPage();
 var data=null;
 var imgs=[];
 var ReaderPOPUP={
@@ -265,6 +266,13 @@ var ReaderPOPUP={
         $("#openCar").click(function(){
             ReaderPOPUP.openCarTab();
         });
+        $("#searchForm").submit(function(){
+            if($("#searchText").val() == ""){
+                return false;
+            }
+            ReaderPOPUP.doSearch($("#searchText").val());
+            return false;
+        });
     },
     getChannelItem:function(itemId){
         var data=JSON.parse(window.localStorage.data);
@@ -274,6 +282,50 @@ var ReaderPOPUP={
             }
         }
         return null;
+    },
+    search:function(keyword,fn,error){
+        if(! keyword || keyword == ""){
+            error({message:"empty or null keyword!!!",status:500});
+        }
+        var gnsearchURL="http://news.google.com.eg/news?pz=1&cf=all&ned=ar_eg&hl=ar&q=site:http://www.almasryalyoum.com+";
+        var gnComp="&cf=all&output=rss";
+        background.jQuery.getFeed({
+            url:gnsearchURL+keyword+gnComp,
+            success:function(rss){
+                fn(rss);
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+                error(textStatus);
+            }
+        });
+    },
+    doSearch:function(keyword){
+        ReaderPOPUP.search(keyword,function(rss){
+            var el,origin=[];
+            for(var i=0;i<rss.items.length;i++){
+                el=background.util.parseHTML(rss.items[i].description);
+                var element={
+                    title:rss.items[i].title,
+                    link:rss.items[i].link,
+                    description:background.util.cutText(el.description, 150, '.'),
+                    img:el.imgsrc == 'le border='?null:el.imgsrc,
+                    updated:new Date(rss.items[i].updated).getTime(),
+                    unread:true
+                }
+                origin.push(element);
+            }
+            if(origin.length > 0){
+                var rows=ReaderPOPUP.getrows(origin);
+                $("#tabs-content").html(rows.out);
+            }else{
+                $("#tabs-content").html($("#noresult").html());
+            }
+        },function(message){
+            console.log(message);
+            if(message.status == 500){
+                $("#tabs-content").html("empty search key")
+            }
+        })
     }
 }
 $(function(){
