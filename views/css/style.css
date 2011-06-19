@@ -161,6 +161,11 @@ a{
 	-webkit-border-radius: 5px;
 	cursor:pointer;
 }
+.settings button[type="submit"] {
+	background:#dad7c4;
+	border:0;
+	-webkit-border-radius: 5px;
+}
 .settings a {
 	background:url(../images/settings.png) no-repeat;
 	color:#fff;
