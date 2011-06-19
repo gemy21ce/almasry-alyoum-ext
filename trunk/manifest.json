@@ -12,7 +12,7 @@
     },
     "browser_action": {
         "default_icon": "views/icons/32X32.png",
-        "default_title": "Al masry al youm",
+        "default_title": "Al Masry Al Youm - المصري اليوم ",
         "popup": "views/popup.html"
     },
     "permissions": [ "http://www.almasryalyoum.com/*","http://news.google.com.eg/*","notifications"]
