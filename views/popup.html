@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>المصري اليوم</title>
         <link href="css/style.css" rel="stylesheet" type="text/css" />
-<!--        <link href="css/english.css" rel="stylesheet" type="text/css" />-->
+        <!--        <link href="css/english.css" rel="stylesheet" type="text/css" />-->
         <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
@@ -31,13 +31,15 @@
                 <ul  id="tabs-menu">
                 </ul>
                 <div id="dropDown" style="display: none;" class="dropdown-link">
-				
                     <div class="dropdown-menu">
-					<div class="dropdown-menu-div">
-                        <ul id="dropDownItems"></ul>
-						</div>
+                        <div class="dropdown-menu-div">
+                            <ul id="dropDownItems"></ul>
+                        </div>
                     </div>
                 </div>
+                <ul id="searchResults" style="display: none;">
+                    <li class="current"><a local="searchresult">نتائج البحث</a><a id="closeSearch">&nbsp;x&nbsp;</a></li>
+                </ul>
             </div>
             <div id="tabs-content" class="scrollable-content">
             </div>
@@ -58,7 +60,7 @@
                     <a id="settings" local="generalSettings">إعدادات عامة</a>
                 </form>
             </div>
-			
+
         </div>
         <div style="display: none;" id="noresult">
             <div style="padding: 170px 0px; text-align: center; font-size: 18px;" local="noresult"></div>
