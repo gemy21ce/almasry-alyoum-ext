@@ -28,7 +28,8 @@ var Mylocals={
         "youhavetochoose":"يجب أن تختار بعض الأخبار",
         "dragnote":"اسحب واسقط لترتيب الاخبار",
         "noresult":"لا يوجدأخبار لهذه الكلمة المفتاحية متوفرة في الوقت الحالي",
-        "searchbutton":"بحث"
+        "searchbutton":"بحث",
+        "searchresult":"نتائج البحث"
     },
     en:{
         "arlang":"عربي",
@@ -53,7 +54,8 @@ var Mylocals={
         "youhavetochoose":"You have to choose one section at least",
         "dragnote":"drag and drop items to reorder sections",
         "noresult":"no search result.",
-        "searchbutton":"search"
+        "searchbutton":"search",
+        "searchresult":"Search results"
     }
 }
 var RTLStyle='css/options-e.css';

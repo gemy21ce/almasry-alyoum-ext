@@ -78,19 +78,7 @@ var ReaderPOPUP={
         var dataOrder = JSON.parse(window.localStorage.dataOrder);
         $("ul#tabs-menu").html(ReaderPOPUP.menu(dataOrder));
 
-        var ils=$("ul#tabs-menu").children('li')
-        var ilswidth=0;
-        ils.slice(0, 4).each(function(){
-            ilswidth+=parseInt($(this).width());
-        });
-        var maxInrow=4;
-        if(ilswidth > 225){
-            maxInrow =3;
-        }
-        if(ils.length > maxInrow){
-            $("#dropDown").show();
-            $("#dropDownItems").append(ils.slice(maxInrow));
-        }
+        ReaderPOPUP.dropDownMenuAction();
         
         if(window.localStorage.lastTab){
             var lastTab=JSON.parse(window.localStorage.lastTab);
@@ -106,6 +94,21 @@ var ReaderPOPUP={
             text:""
         });
         window.localStorage.badgeText=0;
+    },
+    dropDownMenuAction:function(){
+        var ils=$("ul#tabs-menu").children('li')
+        var ilswidth=0;
+        ils.slice(0, 4).each(function(){
+            ilswidth+=parseInt($(this).width());
+        });
+        var maxInrow=4;
+        if(ilswidth > 225){
+            maxInrow =3;
+        }
+        if(ils.length > maxInrow){
+            $("#dropDown").show();
+            $("#dropDownItems").append(ils.slice(maxInrow));
+        }
     },
     /**
      * open category from menu clicking.
@@ -270,9 +273,21 @@ var ReaderPOPUP={
             if($("#searchText").val() == ""){
                 return false;
             }
+            $("#tab-multimedia").hide();
+            $("#tabs-content").show();
+            $("#tabs-content").html('<center><br/><br/><br/><br/><br/><img align="center" src="images/elmasry_loader.gif" style="margin-top:100px;"/></center>');
+            $("#tabs-menu").hide();
+            $("#dropDown").hide();
+            $("#searchResults").show().children("li").addClass("current");
             ReaderPOPUP.doSearch($("#searchText").val());
             return false;
         });
+        $("#closeSearch").click(function(){
+            $("#tabs-menu").show();
+            $("#searchResults").hide();
+            $("#searchText").val("");
+            ReaderPOPUP.ReaderPOPUP();
+        })
     },
     getChannelItem:function(itemId){
         var data=JSON.parse(window.localStorage.data);
@@ -285,7 +300,10 @@ var ReaderPOPUP={
     },
     search:function(keyword,fn,error){
         if(! keyword || keyword == ""){
-            error({message:"empty or null keyword!!!",status:500});
+            error({
+                message:"empty or null keyword!!!",
+                status:500
+            });
         }
         var gnsearchURL="http://news.google.com.eg/news?pz=1&cf=all&ned=ar_eg&hl=ar&q=site:http://www.almasryalyoum.com+";
         var gnComp="&cf=all&output=rss";
