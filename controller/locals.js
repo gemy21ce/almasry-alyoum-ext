@@ -54,7 +54,7 @@ var Mylocals={
         "youhavetochoose":"You have to choose one section at least",
         "dragnote":"drag and drop items to reorder sections",
         "noresult":"no search result.",
-        "searchbutton":"search",
+        "searchbutton":"Search",
         "searchresult":"Search results"
     }
 }
