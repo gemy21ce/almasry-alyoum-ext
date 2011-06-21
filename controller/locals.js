@@ -26,7 +26,7 @@ var Mylocals={
         "saveChanges":"حفظ التعديلات",
         "savingdone":"تم الحفظ",
         "youhavetochoose":"يجب أن تختار بعض الأخبار",
-        "dragnote":"اسحب واسقط لترتيب الاخبار",
+        "dragnote":"اسحب واسقط الأقسام لترتيب الاخبار",
         "noresult":"لا يوجدأخبار لهذه الكلمة المفتاحية متوفرة في الوقت الحالي",
         "searchbutton":"بحث",
         "searchresult":"نتائج البحث"
