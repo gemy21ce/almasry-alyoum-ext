@@ -3,11 +3,22 @@
  * and open the template in the editor.
  */
 var notifications=[];
+var VERSION_ID=1;
 var ReaderBG={
     /**
      * contructor
      */
     ReaderBG:function(){
+        var systemVersion=null;
+        if(window.localStorage.sv){
+            systemVersion=window.localStorage.sv;
+        }
+        if(VERSION_ID != systemVersion){
+            for(i in window.localStorage){
+                delete window.localStorage[i];
+            }
+            window.localStorage.sv = VERSION_ID;
+        }
         if(! window.localStorage.data){
             window.localStorage.data=JSON.stringify(data);
         }

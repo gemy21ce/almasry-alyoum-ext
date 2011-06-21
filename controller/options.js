@@ -89,6 +89,10 @@ var MAYOptions=function(){
                 }
             }
             data.mutlimedia.active=document.getElementById('mutilOption').checked;
+            if(! data.multimedia.active){
+                delete window.localStorage["rss-cat-"+data.mutilmedia.video.id]
+                delete window.localStorage["rss-cat-"+data.mutilmedia.car.id]
+            }
             if(window.localStorage.lang == 'en'){
                 window.localStorage.data_en=JSON.stringify(data);
             }else{
@@ -160,6 +164,8 @@ var MAYOptions=function(){
                 for(j=0 ;j < data.channels.length ; j++){
                     localStorage.removeItem('rss-cat-'+data.channels[j].id);
                 }
+                delete window.localStorage["rss-cat-"+data.mutilmedia.video.id];
+                delete window.localStorage["rss-cat-"+data.mutilmedia.car.id];
                 localStorage.removeItem("dataOrder");
                 window.location.reload();
             });

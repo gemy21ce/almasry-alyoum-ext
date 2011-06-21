@@ -467,7 +467,7 @@ var data_en={
         video:{
             id:28,
             title:'video',
-            url:'http://www.almasryalyoum.com/rss_feed_video/rss.xml',
+            url:'http://www.almasryalyoum.com/en/rss_feed_video/rss.xml',
             unreaditems:0,
             active:false,
             lastItemPubDate:0,
@@ -476,7 +476,7 @@ var data_en={
         car:{
             id:29,
             title:'carecater',
-            url:'http://www.almasryalyoum.com/rss_feed_caricature/rss.xml',
+            url:'http://www.almasryalyoum.com/en/rss_feed_caricature/rss.xml',
             unreaditems:0,
             active:false,
             lastItemPubDate:0,

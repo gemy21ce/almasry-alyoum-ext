@@ -29,10 +29,10 @@ var ReaderPOPUP={
         var out='';
         var channels=data.channels;
         if(order){
-            for(z=0; z < order.length -1; z++){
+            for(z=0; z < order.length; z++){
                 if(isNaN(order[z])){
                     if(data.mutlimedia.active){
-                        out+='<li id="media"><a>ملتميديا</a></li>';
+                        out+='<li id="media"><a>'+data.mutlimedia.title+'</a></li>';
                     }
                     continue;
                 }
@@ -61,7 +61,7 @@ var ReaderPOPUP={
                 }
             }
             if(data.mutlimedia.active){
-                out+='<li id="media"><a>ملتميديا</a></li>';
+                out+='<li id="media"><a>'+data.mutlimedia.title+'</a></li>';
             }
         }
         return out;

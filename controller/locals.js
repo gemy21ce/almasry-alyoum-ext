@@ -29,7 +29,9 @@ var Mylocals={
         "dragnote":"اسحب واسقط الأقسام لترتيب الاخبار",
         "noresult":"لا يوجدأخبار لهذه الكلمة المفتاحية متوفرة في الوقت الحالي",
         "searchbutton":"بحث",
-        "searchresult":"نتائج البحث"
+        "searchresult":"نتائج البحث",
+        "videoTab":"فيديو",
+        "carTab":"كاريكاتير"
     },
     en:{
         "arlang":"عربي",
@@ -55,7 +57,9 @@ var Mylocals={
         "dragnote":"drag and drop items to reorder sections",
         "noresult":"no search result.",
         "searchbutton":"Search",
-        "searchresult":"Search results"
+        "searchresult":"Search results",
+        "videoTab":"video",
+        "carTab":"caricature"
     }
 }
 var RTLStyle='css/options-e.css';
