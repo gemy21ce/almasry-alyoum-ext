@@ -220,7 +220,7 @@ var data={
         lastItemPubDate:0,
         category:'news'
     }],
-    mutlimedia:{
+    multimedia:{
         title:"ملتي ميديا",
         active:false,
         video:{
@@ -461,7 +461,7 @@ var data_en={
         lastItemPubDate:0,
         category:'news'
     }*/],
-    mutlimedia:{
+    multimedia:{
         title:"multimedia",
         active:false,
         video:{

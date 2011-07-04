@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 var notifications=[];
-var VERSION_ID=1;
+var VERSION_ID=1.0;
 var ReaderBG={
     /**
      * contructor
@@ -89,9 +89,9 @@ var ReaderBG={
                 }
             }
         }
-        if(data.mutlimedia.active){
-            ReaderBG.read(data.mutlimedia.video, ReaderBG.parseRSS,'video');
-            ReaderBG.read(data.mutlimedia.car, ReaderBG.parseRSS,'car');
+        if(data.multimedia.active){
+            ReaderBG.read(data.multimedia.video, ReaderBG.parseRSS,'video');
+            ReaderBG.read(data.multimedia.car, ReaderBG.parseRSS,'car');
         }
         window.setTimeout(function(){
             ReaderBG.runNotifications();
@@ -109,7 +109,7 @@ var ReaderBG={
             data=JSON.parse(window.localStorage.data_en);
         }
         if(type){
-            data.mutlimedia[type].unreaditems=counter;
+            data.multimedia[type].unreaditems=counter;
         }else{
             data.channels[itemId-1].unreaditems=counter;
         }

@@ -31,8 +31,8 @@ var ReaderPOPUP={
         if(order){
             for(z=0; z < order.length; z++){
                 if(isNaN(order[z])){
-                    if(data.mutlimedia.active){
-                        out+='<li id="media"><a>'+data.mutlimedia.title+'</a></li>';
+                    if(data.multimedia.active){
+                        out+='<li id="media"><a>'+data.multimedia.title+'</a></li>';
                     }
                     continue;
                 }
@@ -60,8 +60,8 @@ var ReaderPOPUP={
                     out+='</li>';
                 }
             }
-            if(data.mutlimedia.active){
-                out+='<li id="media"><a>'+data.mutlimedia.title+'</a></li>';
+            if(data.multimedia.active){
+                out+='<li id="media"><a>'+data.multimedia.title+'</a></li>';
             }
         }
         return out;
@@ -160,13 +160,13 @@ var ReaderPOPUP={
         delete ReaderPOPUP.openTimeout;
     },
     openVideoTab:function(){
-        var Item=data.mutlimedia.video;
+        var Item=data.multimedia.video;
         $(".active-tab").removeClass('active-tab');
         $("#openVideo").addClass('active-tab');
         ReaderPOPUP.multiMedia(Item);
     },
     openCarTab:function(){
-        var Item=data.mutlimedia.car;
+        var Item=data.multimedia.car;
         $(".active-tab").removeClass('active-tab');
         $("#openCar").addClass('active-tab');
         ReaderPOPUP.multiMedia(Item);
