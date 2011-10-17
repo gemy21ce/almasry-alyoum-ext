@@ -287,6 +287,9 @@ var ReaderPOPUP={
             $("#searchResults").hide();
             $("#searchText").val("");
             ReaderPOPUP.ReaderPOPUP();
+        });
+        $("#logo").click(function(){
+            extension.openURL($('#clickURL').html(),false);
         })
     },
     getChannelItem:function(itemId){

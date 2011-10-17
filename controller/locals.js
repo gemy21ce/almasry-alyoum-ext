@@ -86,6 +86,7 @@ var setLocals = function(){
         link.setAttribute("type", "text/css");
         $('head').append(link);
         $(".logo").children("img").attr('src',Logo);
+        $("#clickURL").html('http://www.almasryalyoum.com/en');
     }
     try{
         $("*").each(function(){
